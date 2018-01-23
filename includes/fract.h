@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:30:44 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/23 05:59:12 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # include "../libft/includes/libft.h"
 # include "../minilibx_macos/mlx.h"
 # include "mlx_win.h"
+
+/*
+** int value for each fractal
+*/
+# define MANDEL 1
+# define JULIA 2
 
 /*
 ** structs which contain booleans var
