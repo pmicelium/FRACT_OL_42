@@ -6,11 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 03:49:08 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:05:44 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/23 05:19:28 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display_choice.h"
+#include "choice.h"
 
 static void		set_fr_null(t_f *f, int fr)
 {
@@ -30,7 +30,6 @@ static void		display_select(t_f *f, int choice)
 		set_fr_null(f, MANDEL);
 	else if (choice == JULIA)
 		set_fr_null(f, JULIA);
-//	display_choice(f, 1);
 }
 
 int				motion_choice(int x, int y, t_f *f)

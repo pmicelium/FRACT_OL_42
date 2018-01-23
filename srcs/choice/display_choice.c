@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 01:11:36 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:07:08 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/23 05:19:35 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/23 05:44:53 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display_choice.h"
+
+#include "choice.h"
 
 static void		fill_image(int *img, int x, int y, int color)
 {
@@ -43,6 +44,13 @@ static void		put_choice(t_f *f)
 	mlx_string_put(f->mlx.ptr, f->mlx.win, 25, 25, GREY, "exit : ESC");
 }
 
+static void		destroy_choice(t_choice *choice, t_f *f)
+{
+	mlx_clear_window(f->mlx.ptr, f->mlx.win);
+	mlx_destroy_image(f->mlx.ptr, choice->img.img);
+	mlx_destroy_image(f->mlx.ptr, choice->img_xpm.img);
+}
+
 void			display_choice(t_f *f, int repaint)
 {
 	static t_choice		choice;
@@ -56,11 +64,16 @@ void			display_choice(t_f *f, int repaint)
 				&choice.img.bpp, &choice.img.lsize, &choice.img.endian);
 		fill_image(choice.img.img_data, 1, 700, GREY);
 	}
-	mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img_xpm.img, 0, 0);
-	mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.img, X_WIN / 3,
+	if (repaint == 1 || repaint == 0)
+	{
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img_xpm.img, 0, 0);
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.img, X_WIN / 3,
 			Y_WIN / 3);
-	mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.img, 2 * X_WIN / 3,
-			Y_WIN / 3);
-	put_choice(f);
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.img,
+			2 * X_WIN / 3, Y_WIN / 3);
+		put_choice(f);
+	}
+	if (repaint == 2)
+		destroy_choice(&choice, f);
 	f->flags.display_repaint = 1;
 }

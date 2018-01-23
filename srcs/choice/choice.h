@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_choice.h                                   :+:      :+:    :+:   */
+/*   choice.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 02:23:31 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:03:34 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/23 05:19:45 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/23 05:19:53 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISPLAY_CHOICE_H
-# define DISPLAY_CHOICE_H
+#ifndef CHOICE_H
+# define CHOICE_H
 # include "../../includes/mlx_win.h"
 # include "../../includes/fract.h"
 

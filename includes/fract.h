@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 04:57:29 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/23 05:30:44 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mlx_win.h"
 
 /*
-** struct which contain booleans var
+** structs which contain booleans var
 */
 typedef struct			s_fr
 {
@@ -39,6 +39,7 @@ typedef struct			s_f
 {
 	struct s_mlx		mlx;
 	struct s_flags		flags;
+	int					fract;
 }						t_f;
 
 /*
@@ -52,6 +53,8 @@ int					key_fonct(int keycode, t_f *f);
 int					loop_hook(t_f *f);
 int					motion_notify(int x, int y, t_f *f);
 int					motion_choice(int x, int y, t_f *f);
+int					mouse_fonct(int button, int x, int y, t_f *f);
+int					mouse_choice(int button, int x, int y, t_f *f);
 
 /*
 ** draw foncts
