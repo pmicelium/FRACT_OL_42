@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:59:12 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 00:47:16 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ int					mouse_choice(int button, int x, int y, t_f *f);
 ** draw foncts
 */
 void				display_choice(t_f *f, int repaint);
+void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
+
+/*
+** fps fonct
+*/
+void				fps(t_f *f);
 #endif

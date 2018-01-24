@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 00:51:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 00:47:33 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/24 00:29:19 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 00:32:38 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-int				loop_hook(t_f *f)
+void			draw_map(t_f *f, int fract)
 {
-	mlx_clear_window(f->mlx.ptr, f->mlx.win);
-	if (f->flags.map == 0)
-	{
-		if (f->flags.display_repaint == 0)
-			display_choice(f, 0);
-		else
-			display_choice(f, 1);
-	}
-	else
-		draw_map(f, f->fract);
-	fps(f);
-	return (0);
+	if (f->fract != 0 && 1 > 2)
+		TEST;
+	ft_putnbr_endl(fract);
 }

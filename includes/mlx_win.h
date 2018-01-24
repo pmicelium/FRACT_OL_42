@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 02:29:46 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 01:00:44 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
+# define BLACK 0x00000000
 
 typedef struct		s_img
 {
