@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 03:49:08 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:19:28 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 03:18:30 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void		display_select(t_f *f, int choice)
 
 int				motion_choice(int x, int y, t_f *f)
 {
-//	printf("x : %d, y : %d\n", x, y);
 	if (x < 600 && y > Y_WIN / 3)
 		display_select(f, MANDEL);
 	if (x > 600 && x < 1200 && y > Y_WIN / 3)

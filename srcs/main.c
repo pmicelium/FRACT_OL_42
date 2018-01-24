@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 06:21:01 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 05:02:13 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 		return (0);
 	if (argc > 2)
 		return (2);
-		f->flags.map = 0;
+	f->flags.map = 0;
 	if (ft_strcmp(argv[1], "Mandelbrot") == 0)
 	{
 		f->flags.map = 1;
@@ -34,8 +34,9 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 	return (2);
 }
 
-static void		set_var(t_f *f)
+void		set_var(t_f *f)
 {
+	f->fract = 0;
 	f->flags.map = 0;
 	f->flags.leaks = 0;
 	f->flags.display_repaint = 0;

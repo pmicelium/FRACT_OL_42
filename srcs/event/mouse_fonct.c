@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   motion_notify.c                                    :+:      :+:    :+:   */
+/*   mouse_fonct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 03:53:48 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 03:57:21 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/23 05:15:18 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 05:04:57 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "event.h"
 
-int				motion_notify(int x, int y, t_f *f)
+int				mouse_fonct(int button, int x, int y, t_f *f)
 {
 	if (f->flags.map == 0)
-		motion_choice(x, y, f);
+		mouse_choice(button, x, y, f);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 00:51:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 00:47:33 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 04:47:46 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int				loop_hook(t_f *f)
 	if (f->flags.map == 0)
 	{
 		if (f->flags.display_repaint == 0)
-			display_choice(f, 0);
+			display_choice(f, NEW);
 		else
-			display_choice(f, 1);
+			display_choice(f, REPAINT);
 	}
 	else
 		draw_map(f, f->fract);

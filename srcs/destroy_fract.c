@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fps.h                                              :+:      :+:    :+:   */
+/*   destroy_fract.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/24 00:35:23 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:05:50 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/24 04:52:09 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 05:02:46 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FPS_H
-# define FPS_H
-# include "fract.h"
-# include "mlx_win.h"
-# include <time.h>
+#include "fract.h"
 
-typedef struct		s_fps
+void			destroy_fract(t_f *f)
 {
-	unsigned int	fps;
-	unsigned int	start;
-}					t_fps;
-
-void				fps(t_f*f);
-#endif
+	if (f->flags.map == 0)
+		display_choice(f, DESTROY);
+	else if (f->fract == MANDEL)
+	{
+		draw_mandelbrot(f, DESTROY);
+		set_var(f);
+	}
+}

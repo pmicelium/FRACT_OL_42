@@ -6,16 +6,17 @@
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/14 02:47:46 by pmiceli           #+#    #+#              #
-#    Updated: 2018/01/24 00:44:20 by pmiceli          ###   ########.fr        #
+#    Updated: 2018/01/24 05:07:14 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRCDIR = ./srcs/
-SRCNAMES = main.c key_fonct.c loop_hook.c choice/display_choice.c     \
-		   motion_notify.c choice/motion_choice.c mouse_fonct.c       \
-		   choice/mouse_choice.c draw_map.c fps/fps.c
+SRCNAMES = main.c event/key_fonct.c loop_hook.c choice/display_choice.c\
+event/motion_notify.c choice/motion_choice.c event/mouse_fonct.c\
+choice/mouse_choice.c draw_map.c fps/fps.c mandelbrot/draw_mandelbrot.c\
+destroy_fract.c
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/
 OBJS_DIR = ./objs/

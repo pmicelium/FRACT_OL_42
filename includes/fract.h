@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 00:47:16 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 05:01:36 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 */
 # define MANDEL 1
 # define JULIA 2
+
+/*
+** define draw
+*/
+# define NEW 0
+# define REPAINT 1
+# define DESTROY 2
 
 /*
 ** structs which contain booleans var
@@ -46,6 +53,7 @@ typedef struct			s_f
 	struct s_mlx		mlx;
 	struct s_flags		flags;
 	int					fract;
+	int				do_nothing;
 }						t_f;
 
 /*
@@ -65,8 +73,19 @@ int					mouse_choice(int button, int x, int y, t_f *f);
 /*
 ** draw foncts
 */
+void				draw_mandelbrot(t_f *f, int destroy);
 void				display_choice(t_f *f, int repaint);
 void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
+
+/*
+** exit fonct
+*/
+void				destroy_fract(t_f *f);
+
+/*
+** reset fonct
+*/
+void				set_var(t_f *f);
 
 /*
 ** fps fonct

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_fonct.c                                        :+:      :+:    :+:   */
+/*   mandelbrot.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/22 23:51:54 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/23 05:57:18 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 05:05:59 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#ifndef MANDELBROT_H
+# define MANDELBROT_H
+# include "fract.h"
 
-int				key_fonct(int keycode, t_f *f)
+typedef struct		s_mandel
 {
-	if (keycode == KEY_ESC)
-	{
-		ft_putendl_color("exiting ...", "green");
-		if (f->flags.map == 0)
-			display_choice(f, 2);
-		mlx_clear_window(f->mlx.ptr, f->mlx.win);
-		mlx_destroy_window(f->mlx.ptr, f->mlx.win);
-		exit(1);
-	}
-	return (0);
-}
+	double			x1;
+	double			y1;
+	double			x2;
+	double			y2;
+	double			c_r;
+	double			c_i;
+	double			z_r;
+	double			z_i;
+	int				image_x;
+	int				image_y;
+	int				zoom;
+	int				ite_max;
+	struct s_img	img;
+}					t_mandel;
+
+#endif

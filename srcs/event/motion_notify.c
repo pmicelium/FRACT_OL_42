@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fps.h                                              :+:      :+:    :+:   */
+/*   motion_notify.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/24 00:35:23 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:05:50 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/23 03:53:48 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 05:04:49 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FPS_H
-# define FPS_H
-# include "fract.h"
-# include "mlx_win.h"
-# include <time.h>
+#include "event.h"
 
-typedef struct		s_fps
+int				motion_notify(int x, int y, t_f *f)
 {
-	unsigned int	fps;
-	unsigned int	start;
-}					t_fps;
-
-void				fps(t_f*f);
-#endif
+	if (f->flags.map == 0)
+		motion_choice(x, y, f);
+	return (0);
+}
