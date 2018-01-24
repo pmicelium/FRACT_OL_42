@@ -6,11 +6,17 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 23:51:54 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:08:04 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 06:03:46 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "event.h"
+
+static void		key_fract(int keycode, t_f *f)
+{
+	if (f->fract == MANDEL)
+		key_mandel(keycode, f);
+}
 
 int				key_fonct(int keycode, t_f *f)
 {
@@ -27,5 +33,7 @@ int				key_fonct(int keycode, t_f *f)
 		destroy_fract(f);
 		mlx_clear_window(f->mlx.ptr, f->mlx.win);
 	}
+	if (f->flags.map != 0)
+		key_fract(keycode, f);
 	return (0);
 }

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_fonct.c                                      :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 05:15:18 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 06:40:45 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/24 00:29:19 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 05:56:02 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "event.h"
+#include "fract.h"
 
-static void		mouse_fract(int button, int x, int y, t_f *f)
+void			draw_map(t_f *f, int fract)
 {
-	if (f->fract == MANDEL)
-		mouse_mandel(button, x, y, f);
-}
-
-int				mouse_fonct(int button, int x, int y, t_f *f)
-{
-	if (f->flags.map == 0)
-		mouse_choice(button, x, y, f);
-	else
-		mouse_fract(button, x, y, f);
-	return (0);
+	if (fract == MANDEL)
+	{
+		if (f->flags.mandel_repaint == 0)
+			draw_mandelbrot(f, NEW);
+		else
+			draw_mandelbrot(f, REPAINT);
+	}
+//	if (fract == JULIA)
+//		draw_julia(f);
 }

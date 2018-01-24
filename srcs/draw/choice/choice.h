@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.h                                       :+:      :+:    :+:   */
+/*   choice.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:05:59 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/23 05:19:45 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 06:02:44 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MANDELBROT_H
-# define MANDELBROT_H
-# include "fract.h"
+#ifndef CHOICE_H
+# define CHOICE_H
+# include "../../../includes/mlx_win.h"
+# include "../../../includes/fract.h"
 
-typedef struct		s_mandel
+/*
+** Possiton of the choice
+*/
+# define MAN_X (X_WIN / 6 - 25)
+# define MAN_Y (Y_WIN / 3 + 50)
+# define JUL_X (3 * X_WIN / 6 - 15)
+# define JUL_Y (Y_WIN / 3 + 50)
+
+/*
+** value for selection
+*/
+# define MANDEL 1
+# define JULIA 2
+
+typedef struct		s_choice
 {
-	double			x1;
-	double			y1;
-	double			x2;
-	double			y2;
-	double			c_r;
-	double			c_i;
-	double			z_r;
-	double			z_i;
-	int				image_x;
-	int				image_y;
-	int				zoom;
-	int				ite_max;
+	int				h;
+	int				w;
+	struct s_img	img_xpm;
 	struct s_img	img;
-}					t_mandel;
+}					t_choice;
 
 #endif

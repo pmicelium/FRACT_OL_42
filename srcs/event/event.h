@@ -6,12 +6,12 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 05:03:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:04:29 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 06:02:06 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENT_H
 # define EVENT_H
-# include "fract.h"
+# include "../../includes/fract.h"
 
 #endif

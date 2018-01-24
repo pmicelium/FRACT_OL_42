@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_fonct.c                                      :+:      :+:    :+:   */
+/*   mouse_mandel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 05:15:18 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 06:40:45 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/01/24 06:21:25 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/01/24 06:46:57 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "event.h"
+#include "mandelbrot.h"
 
-static void		mouse_fract(int button, int x, int y, t_f *f)
+int				mouse_mandel(int button, int x, int y, t_f *f)
 {
-	if (f->fract == MANDEL)
-		mouse_mandel(button, x, y, f);
-}
-
-int				mouse_fonct(int button, int x, int y, t_f *f)
-{
-	if (f->flags.map == 0)
-		mouse_choice(button, x, y, f);
-	else
-		mouse_fract(button, x, y, f);
+	if (button == WHEEL_UP)
+	{
+		f->event.mouse.zoom++;
+		f->flags.mandel_repaint = NEW;
+		f->event.mouse.x = x;
+		f->event.mouse.y = y;
+	}
+	if (button == WHEEL_DW)
+	{
+		f->event.mouse.zoom--;
+		if (f->event.mouse.zoom == 0)
+			f->event.mouse.zoom++;
+		f->flags.mandel_repaint = NEW;
+		f->event.mouse.x = x;
+		f->event.mouse.y = y;
+	}
 	return (0);
 }

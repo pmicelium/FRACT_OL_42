@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:02:13 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 06:36:24 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,12 @@ void		set_var(t_f *f)
 	f->flags.map = 0;
 	f->flags.leaks = 0;
 	f->flags.display_repaint = 0;
+	f->flags.mandel_repaint = 0;
 	f->flags.fr.mandel = 0;
 	f->flags.fr.julia = 0;
+	f->event.mouse.zoom = 0;
+	f->event.mouse.x = 0;
+	f->event.mouse.y = 0;
 }
 
 int				main(int argc, char *argv[])

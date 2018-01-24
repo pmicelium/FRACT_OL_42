@@ -6,12 +6,12 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 05:01:36 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/24 06:40:13 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_H
-# include "../libft/includes/libft.h"
+# include "../libft/includes/libft.h" //retirer les .. PARTOUT !!!//
 # include "../minilibx_macos/mlx.h"
 # include "mlx_win.h"
 
@@ -29,6 +29,21 @@
 # define DESTROY 2
 
 /*
+** Event's structs
+*/
+typedef struct			s_mouse
+{
+	unsigned int		zoom;
+	unsigned int		x;
+	unsigned int		y;
+}						t_mouse;
+
+typedef struct			s_event
+{
+	struct s_mouse		mouse;
+}						t_event;
+
+/*
 ** structs which contain booleans var
 */
 typedef struct			s_fr
@@ -42,6 +57,7 @@ typedef struct			s_flags
 	int					leaks;
 	int					map;
 	int					display_repaint;
+	int					mandel_repaint;
 	struct s_fr			fr;
 }						t_flags;
 
@@ -50,10 +66,11 @@ typedef struct			s_flags
 */
 typedef struct			s_f
 {
+	int					fract;
 	struct s_mlx		mlx;
 	struct s_flags		flags;
-	int					fract;
-	int				do_nothing;
+	struct s_event		event;
+	int					do_nothing;
 }						t_f;
 
 /*
@@ -69,6 +86,8 @@ int					motion_notify(int x, int y, t_f *f);
 int					motion_choice(int x, int y, t_f *f);
 int					mouse_fonct(int button, int x, int y, t_f *f);
 int					mouse_choice(int button, int x, int y, t_f *f);
+int					key_mandel(int keycode, t_f *f);
+int					mouse_mandel(int button, int x, int y, t_f *f);
 
 /*
 ** draw foncts
