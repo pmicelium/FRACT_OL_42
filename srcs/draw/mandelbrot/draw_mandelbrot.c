@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 06:48:39 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/25 05:56:22 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,27 @@ static int		set_color(t_mandel m, int i)
 
 static void		set_mandel(t_mandel *m, t_f *f)
 {
-	m->x1 = -2.1;
-	m->x2 = 0.6;
-	m->y1 = -1.2;
-	m->y2 = 1.2;
+	double		zoom;
+	double		mx;
+	double		my;
+
+	if (!m->init)
+	{
+		m->x1 = -2.1;
+		m->x2 = 0.6;
+		m->y1 = -1.2;
+		m->y2 = 1.2;
+		m->init = 1;
+	}
+	mx = (m->x2 - m->x1) / 2.0;
+	my = (m->y2 - m->y1) / 2.0;
+	zoom = f->event.mouse.zoom;
+	printf("%f\n", zoom);
+	m->x1 = (m->x1) / (zoom);
+	m->x2 = (m->x2) / (zoom);
+	m->y1 = (m->y1) / (zoom);
+	m->y2 = (m->y2) / (zoom);
+	f->event.mouse.zoom = 1;
 	m->ite_max = 50;
 	m->image_x = X_WIN;
 	m->image_y = Y_WIN;
@@ -60,8 +77,8 @@ void			draw_mandelbrot(t_f *f, int repaint)
 			y = 0;
 			while (y < m.image_y)
 			{
-				m.c_r = x / m.zx + m.x1 + f->event.mouse.zoom;
-				m.c_i = y / m.zy + m.y1 + f->event.mouse.zoom;
+				m.c_r = x / m.zx + m.x1;
+				m.c_i = y / m.zy + m.y1;
 				m.z_r = 0;
 				m.z_i = 0;
 				i = 0;
@@ -73,7 +90,9 @@ void			draw_mandelbrot(t_f *f, int repaint)
 					i++;
 				}
 				if (i != m.ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
+				{
 					m.img.data[y * X_WIN + x] = set_color(m, i);
+				}
 				y++;
 			}
 		x++;

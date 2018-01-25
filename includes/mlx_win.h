@@ -6,14 +6,14 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 06:43:05 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/25 02:36:50 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_WIN_H
 # define MLX_WIN_H
-# define X_WIN 270 * 6
-# define Y_WIN 240 * 6
+# define X_WIN 270 * 5
+# define Y_WIN 240 * 5
 
 /*
 ** Key's defines

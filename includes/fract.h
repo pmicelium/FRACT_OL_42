@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 06:40:13 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/25 05:20:48 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 */
 typedef struct			s_mouse
 {
-	unsigned int		zoom;
-	unsigned int		x;
-	unsigned int		y;
+	double				zoom;
+	double				x;
+	double				y;
 }						t_mouse;
 
 typedef struct			s_event
