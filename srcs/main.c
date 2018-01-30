@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/25 05:19:05 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/30 03:37:59 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void		set_var(t_f *f)
 	f->flags.fr.mandel = 0;
 	f->flags.fr.julia = 0;
 	f->event.mouse.zoom = 1;
-	f->event.mouse.x = -1;
-	f->event.mouse.y = -1;
+	f->event.mouse.x = (double)X_WIN / 2.0;
+	f->event.mouse.y = (double)Y_WIN / 2.0;
 }
 
 int				main(int argc, char *argv[])

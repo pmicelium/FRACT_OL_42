@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/30 01:20:14 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/30 04:22:41 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ static void		set_mandel(t_mandel *m, t_f *f)
 	double		zoom;
 	double		fx;
 	double		fy;
+	double		x;
+	double		y;
 
 	if (!m->init)
 	{
 		if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		//if (X_WIN >= 270 && Y_WIN >= 240)
 		{
 			TESTS(1);
 			fx = 1;
@@ -48,15 +49,15 @@ static void		set_mandel(t_mandel *m, t_f *f)
 			fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
 			fy = 1;
 		}
-		printf("fx : %f, fy : %f\n", fx, fy);
 		m->x1 = (-2.1 + 0.75) * fx - 0.75;
 		m->x2 = (0.6 + 0.75) * fx - 0.75;
 		m->y1 = -1.2 * fy;
 		m->y2 = 1.2 * fy;
 		m->init = 1;
 	}
+	x = (((f->event.mouse.x * (m->x1 - m->x2)) / ((double)X_WIN)) * -1) + (m->x1 - m->x2) / 2.0 - 0.75;
+	y = (((f->event.mouse.y * (m->y1 - m->y2)) / ((double)Y_WIN))) - (m->y1 -m->y2) / 2.0;
 	zoom = f->event.mouse.zoom;
-//	printf("%f\n", zoom);
 	m->x1 = (m->x1) / (zoom);
 	m->x2 = (m->x2) / (zoom);
 	m->y1 = (m->y1) / (zoom);
@@ -114,5 +115,8 @@ void			draw_mandelbrot(t_f *f, int repaint)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, m.img.ptr, 0, 0);
 	f->flags.mandel_repaint = 1;
 	if (repaint == DESTROY)
+	{
+		m.init = 0;
 		mlx_destroy_image(f->mlx.ptr, m.img.ptr);
+	}
 }
