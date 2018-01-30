@@ -6,7 +6,7 @@
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/14 02:47:46 by pmiceli           #+#    #+#              #
-#    Updated: 2018/01/24 06:21:08 by pmiceli          ###   ########.fr        #
+#    Updated: 2018/01/29 21:44:36 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/
+INCS = ./includes/mlx_win.h ./includes/mlx_win.h ./srcs/draw/mandelbrot/mandelbrot.h\
+	   ./srcs/draw/choice/choice.h ./srcs/event/event.h ./srcs/fps/fps.h
+
 OBJS_DIR = ./objs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCNAMES:.c=.o))
 
@@ -56,7 +59,7 @@ print_done :
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
-$(OBJS_DIR)%.o:$(SRCDIR)%.c
+$(OBJS_DIR)%.o:$(SRCDIR)%.c $(INCS)
 	@echo "\033[038;2;255;153;0m⧖	Creating 	$@\033[0m"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -I$(INC) -o $@ -c $<

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/25 05:56:22 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/30 01:20:14 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,33 @@ static int		set_color(t_mandel m, int i)
 static void		set_mandel(t_mandel *m, t_f *f)
 {
 	double		zoom;
-	double		mx;
-	double		my;
+	double		fx;
+	double		fy;
 
 	if (!m->init)
 	{
-		m->x1 = -2.1;
-		m->x2 = 0.6;
-		m->y1 = -1.2;
-		m->y2 = 1.2;
+		if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
+		//if (X_WIN >= 270 && Y_WIN >= 240)
+		{
+			TESTS(1);
+			fx = 1;
+			fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+		}
+		else
+		{
+			TESTS(3);
+			fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
+			fy = 1;
+		}
+		printf("fx : %f, fy : %f\n", fx, fy);
+		m->x1 = (-2.1 + 0.75) * fx - 0.75;
+		m->x2 = (0.6 + 0.75) * fx - 0.75;
+		m->y1 = -1.2 * fy;
+		m->y2 = 1.2 * fy;
 		m->init = 1;
 	}
-	mx = (m->x2 - m->x1) / 2.0;
-	my = (m->y2 - m->y1) / 2.0;
 	zoom = f->event.mouse.zoom;
-	printf("%f\n", zoom);
+//	printf("%f\n", zoom);
 	m->x1 = (m->x1) / (zoom);
 	m->x2 = (m->x2) / (zoom);
 	m->y1 = (m->y1) / (zoom);
