@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/25 05:20:48 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/31 01:01:45 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,16 @@ typedef struct			s_mouse
 	double				y;
 }						t_mouse;
 
+typedef struct			s_key
+{
+	double				tr_h;
+	double				tr_v;
+}						t_key;
+
 typedef struct			s_event
 {
 	struct s_mouse		mouse;
+	struct s_key		key;
 }						t_event;
 
 /*

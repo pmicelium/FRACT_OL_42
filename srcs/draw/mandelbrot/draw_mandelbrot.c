@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/30 04:22:41 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/01/31 02:34:17 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,33 @@ static int		set_color(t_mandel m, int i)
 
 static void		set_mandel(t_mandel *m, t_f *f)
 {
-	double		zoom;
 	double		fx;
 	double		fy;
-	double		x;
-	double		y;
 
 	if (!m->init)
 	{
+		fx = 1;
+		fy = 1;
 		if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		{
-			TESTS(1);
-			fx = 1;
 			fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
-		}
 		else
-		{
-			TESTS(3);
 			fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
-			fy = 1;
-		}
 		m->x1 = (-2.1 + 0.75) * fx - 0.75;
 		m->x2 = (0.6 + 0.75) * fx - 0.75;
 		m->y1 = -1.2 * fy;
 		m->y2 = 1.2 * fy;
 		m->init = 1;
 	}
-	x = (((f->event.mouse.x * (m->x1 - m->x2)) / ((double)X_WIN)) * -1) + (m->x1 - m->x2) / 2.0 - 0.75;
-	y = (((f->event.mouse.y * (m->y1 - m->y2)) / ((double)Y_WIN))) - (m->y1 -m->y2) / 2.0;
-	zoom = f->event.mouse.zoom;
-	m->x1 = (m->x1) / (zoom);
-	m->x2 = (m->x2) / (zoom);
-	m->y1 = (m->y1) / (zoom);
-	m->y2 = (m->y2) / (zoom);
+//	x = (((f->event.mouse.x * (m->x1 - m->x2)) / ((double)X_WIN)) * -1) + (m->x1 - m->x2) / 2.0 - 0.75;
+//	y = (((f->event.mouse.y * (m->y1 - m->y2)) / ((double)Y_WIN))) - (m->y1 -m->y2) / 2.0;
+	m->x1 = ((m->x1) / f->event.mouse.zoom) + f->event.key.tr_h;
+	m->x2 = ((m->x2) / f->event.mouse.zoom) + f->event.key.tr_h;
+	m->y1 = ((m->y1) / f->event.mouse.zoom) + f->event.key.tr_v;
+	m->y2 = ((m->y2) / f->event.mouse.zoom) + f->event.key.tr_v;
+	f->event.key.tr_h = 0;
+	f->event.key.tr_v = 0;
 	f->event.mouse.zoom = 1;
 	m->ite_max = 50;
-	m->image_x = X_WIN;
-	m->image_y = Y_WIN;
 	m->img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
 	m->img.data = (int*)mlx_get_data_addr(m->img.ptr, &m->img.bpp,
 			&m->img.lsize, &m->img.endian);
@@ -82,13 +72,13 @@ void			draw_mandelbrot(t_f *f, int repaint)
 	if (repaint == NEW)
 	{
 		set_mandel(&m, f);
-		m.zx = m.image_x / (m.x2 - m.x1);
-		m.zy = m.image_y / (m.y2 - m.y1);
+		m.zx = X_WIN / (m.x2 - m.x1);
+		m.zy = Y_WIN / (m.y2 - m.y1);
 		x = 0;
-		while(x < m.image_x)
+		while(x < X_WIN)
 		{
 			y = 0;
-			while (y < m.image_y)
+			while (y < Y_WIN)
 			{
 				m.c_r = x / m.zx + m.x1;
 				m.c_i = y / m.zy + m.y1;
