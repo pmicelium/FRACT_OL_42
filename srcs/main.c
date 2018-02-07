@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/31 05:24:49 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/06 04:01:47 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 	return (2);
 }
 
-void		set_var(t_f *f)
+void			set_var(t_f *f)
 {
 	f->fract = 0;
 	f->flags.map = 0;
@@ -43,9 +43,11 @@ void		set_var(t_f *f)
 	f->flags.mandel_repaint = 0;
 	f->flags.fr.mandel = 0;
 	f->flags.fr.julia = 0;
-	f->event.mouse.zoom = 1;
+	f->event.mouse.zoom = 0;
 	f->event.mouse.x = 0;
 	f->event.mouse.y = 0;
+	f->event.motion.x = 0;
+	f->event.motion.y = 0;
 	f->event.key.tr_h = 0;
 	f->event.key.tr_v = 0;
 }

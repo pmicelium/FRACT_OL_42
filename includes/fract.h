@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/31 01:01:45 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/06 02:25:40 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,17 @@ typedef struct			s_key
 	double				tr_v;
 }						t_key;
 
+typedef struct			s_motion
+{
+	double				x;
+	double				y;
+}						t_motion;
+
 typedef struct			s_event
 {
 	struct s_mouse		mouse;
 	struct s_key		key;
+	struct s_motion		motion;
 }						t_event;
 
 /*
@@ -95,6 +102,7 @@ int					mouse_fonct(int button, int x, int y, t_f *f);
 int					mouse_choice(int button, int x, int y, t_f *f);
 int					key_mandel(int keycode, t_f *f);
 int					mouse_mandel(int button, int x, int y, t_f *f);
+int					motion_mandel(int x, int y, t_f *f);
 
 /*
 ** draw foncts

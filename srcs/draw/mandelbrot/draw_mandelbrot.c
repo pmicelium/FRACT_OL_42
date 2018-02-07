@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/31 05:35:51 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/06 04:37:54 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,27 @@ static int		set_color(t_mandel m, int i)
 
 static double	calcul_coor(double coor, t_f *f, t_mandel *m)
 {
+	double		tr_h;
+	double		tr_v;
+
+	tr_h = ((m->x1 - m->x2) / 10.0) * f->event.key.tr_h;
+	tr_v = ((m->y1 - m->y2) / 10.0) * f->event.key.tr_v;
 	if (m)
 		f->do_nothing = 0;
-	coor = coor / f->event.mouse.zoom;
 	if (coor == m->x2 || coor == m->x1)
-		coor += f->event.key.tr_h;
+		coor += tr_h;
 	else
-		coor += f->event.key.tr_v;
+		coor += tr_v;
 	return (coor);
 }
 
 static void		set_mandel(t_mandel *m, t_f *f)
 {
-	double		fx;
-	double		fy;
-	double		x;
-	double		y;
+	static double		fx;
+	static double		fy;
+	static double		h = 1;
+	double				x = 0;
+	double				y = 0;
 
 	if (!m->init)
 	{
@@ -60,29 +65,31 @@ static void		set_mandel(t_mandel *m, t_f *f)
 		m->y2 = 1.2 * fy;
 		m->init = 1;
 	}
-	x = (((f->event.mouse.x * (m->x1 - m->x2)) / ((double)X_WIN)) * -1) + (m->x1 - m->x2) / 2.0 - 0.75;
-	y = (((f->event.mouse.y * (m->y1 - m->y2)) / ((double)Y_WIN))) - (m->y1 -m->y2) / 2.0;
 	m->x1 = calcul_coor(m->x1, f, m);
 	m->x2 = calcul_coor(m->x2, f, m);
 	m->y1 = calcul_coor(m->y1, f, m);
 	m->y2 = calcul_coor(m->y2, f, m);
-	printf("x1 : %f, x2 : %f, y1 : %f, y2 : %f\n", m->x1, m->x2, m->y1, m->y2);
-	if (f->event.mouse.x != 0  && f->event.mouse.y != 0)
+	if (f->event.mouse.zoom != 0)
 	{
-		TEST;
-		m->x1 = x - 0.5;
-		m->x2 = x + 0.5;
-		m->y1 = y - 0.5;
-		m->y2 = y + 0.5;
-		//presque ca, manque juste de garder en mem les ancien x + rev le y
+		x = (((f->event.mouse.x * (m->x1 - m->x2)) / ((double)X_WIN))) - (m->x1 - m->x2) / 2.0 - 0.75;
+		y = (((f->event.mouse.y * (m->y1 - m->y2)) / ((double)Y_WIN))) - (m->y1 -m->y2) / 2.0;
+		h = f->event.mouse.zoom > 0 ? h - 0.1 : h + 0.1;
+		m->x1 = (x - h) * fx;
+		m->x2 = (x + h) * fx;
+		m->y1 = (y - h) * fy;
+		m->y2 = (y + h) * fy;
 	}
-	f->event.mouse.zoom = 1;
-	f->event.key.tr_v = 0;
-	f->event.key.tr_h = 0;
+	NL; NL;
+		printf("h : %f, mouse.zoom :  %f\n", h, f->event.mouse.zoom);
+		printf("f->event.motion.x : %f, f->event.motion.y : %f\n", (((f->event.motion.x * (m->x1 - m->x2)) / ((double)X_WIN))) - (m->x1 - m->x2) / 2.0 - 0.75, (((f->event.motion.y * (m->y1 - m->y2)) / ((double)Y_WIN))) - (m->y1 -m->y2) / 2.0);
+		printf("x1 : %f, x2 : %f, y1 : %f, y2 : %f\n", m->x1, m->x2, m->y1, m->y2);
+//	printf("x1 : %f, x2 : %f, y1 : %f, y2 : %f\n", m->x1, m->x2, m->y1, m->y2);
+	f->event.mouse.zoom = 0.0;
+	f->event.key.tr_v = 0.0;
+	f->event.key.tr_h = 0.0;
 	m->ite_max = 50;
 	m->img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
-	m->img.data = (int*)mlx_get_data_addr(m->img.ptr, &m->img.bpp,
-			&m->img.lsize, &m->img.endian);
+	m->img.data = (int*)mlx_get_data_addr(m->img.ptr, &m->img.bpp, &m->img.lsize, &m->img.endian);
 }
 
 void			draw_mandelbrot(t_f *f, int repaint)
@@ -99,7 +106,7 @@ void			draw_mandelbrot(t_f *f, int repaint)
 		m.zx = X_WIN / (m.x2 - m.x1);
 		m.zy = Y_WIN / (m.y2 - m.y1);
 		x = 0;
-		while(x < X_WIN)
+		while (x < X_WIN)
 		{
 			y = 0;
 			while (y < Y_WIN)
