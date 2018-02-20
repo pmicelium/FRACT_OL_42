@@ -6,13 +6,12 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 06:02:44 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 00:49:06 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHOICE_H
 # define CHOICE_H
-# include "../../../includes/mlx_win.h"
 # include "../../../includes/fract.h"
 
 /*

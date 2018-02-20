@@ -6,14 +6,15 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/06 02:25:40 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 00:48:08 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_H
-# include "../libft/includes/libft.h" //retirer les .. PARTOUT !!!//
-# include "../minilibx_macos/mlx.h"
-# include "mlx_win.h"
+# include "../lib/libft/includes/libft.h" //retirer les .. PARTOUT !!!//
+# include "../lib/minilibx_macos/mlx.h"
+# include "../lib/mlx_perso/includes/mlx_perso.h"
+//# include "mlx_win.h"
 
 /*
 ** int value for each fractal

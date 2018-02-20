@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/25 04:59:31 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 04:23:15 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct		s_mandel
 	double			z_i;
 	double			zx;
 	double			zy;
-	int				zoom;
-	int				image_x;
-	int				image_y;
-	int				ite_max;
+	double			zoom;
+	double			image_x;
+	double			image_y;
+	double			ite_max;
 	struct s_img	img;
 }					t_mandel;
 

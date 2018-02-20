@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/31 00:27:30 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 00:44:58 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,4 @@ typedef struct		s_mlx
 	struct s_img	img;
 }					t_mlx;
 
-/*
-** check if you can draw at (x, y) in a image of size (x_img, y_img)
-** return CHECK_OK = 1 if it's good, CHECK_KO = 0if it isnt
-*/
-int					check_draw(int x, int y, int x_img, int y_img);
 #endif
