@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 07:04:02 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 07:14:54 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void			draw_mandelbrot(t_f *f, int repaint)
 	int					x;
 	int					y;
 	int					i;
+	double				x_mouse;
+	double				y_mouse;
 	double				tmp;
 
 	if (repaint == NEW)
@@ -58,6 +60,7 @@ void			draw_mandelbrot(t_f *f, int repaint)
 			{
 				m.c_r = X_WIN > Y_WIN ? x / m.zoom - 1.2 * ((double)X_WIN / (double)Y_WIN) : x / m.zoom - 1.35;
 				m.c_i = X_WIN > Y_WIN ? y / m.zoom - 1.2 : y / m.zoom - 1.35 * ((double)Y_WIN / (double)X_WIN);
+				// faire la mm chose pour le zoom centre (remplacer 1.2 / 1.35 par les coor de la sourie => ancient boulot)
 				m.z_r = 0;
 				m.z_i = 0;
 				i = 0;
