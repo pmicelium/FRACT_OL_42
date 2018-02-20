@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_fonct.c                                      :+:      :+:    :+:   */
+/*   display_cross.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 05:15:18 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 05:59:01 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/02/20 06:48:09 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/02/20 06:50:15 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "event.h"
+#include "mlx_perso.h"
 
-static void		mouse_fract(int button, int x, int y, t_f *f)
+void		display_cross(t_mlx mlx)
 {
-	if (f->fract == MANDEL)
-		mouse_mandel(button, x, y, f);
-}
+	int		x;
+	int		y;
 
-int				mouse_fonct(int button, int x, int y, t_f *f)
-{
-	if (f->flags.map == 0)
-		mouse_choice(button, x, y, f);
-	else
-		mouse_fract(button, x, y, f);
-	return (0);
+	y = 0;
+	x = X_WIN / 2;
+	while (y < Y_WIN)
+	{
+		mlx_pixel_put(mlx.ptr, mlx.win, x, y, 0xFFFF00);
+		y++;
+	}
+	y = Y_WIN / 2;
+	x = 0;
+	while (x < X_WIN)
+	{
+		mlx_pixel_put(mlx.ptr, mlx.win, x, y, 0xFFFF00);
+		x++;
+	}
 }

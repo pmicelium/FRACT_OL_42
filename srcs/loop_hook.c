@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 00:51:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 04:47:46 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 06:52:03 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int				loop_hook(t_f *f)
 	else
 		draw_map(f, f->fract);
 	fps(f);
+	display_cross(f->mlx);
 	return (0);
 }

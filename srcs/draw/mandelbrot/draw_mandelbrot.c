@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 05:06:20 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 07:04:02 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		set_color(t_mandel m, int i)
 	return (color);
 }
 
-void draw_mandelbrot(t_f *f, int repaint)
+void			draw_mandelbrot(t_f *f, int repaint)
 {
 	static t_mandel		m;
 	int					x;
@@ -39,15 +39,15 @@ void draw_mandelbrot(t_f *f, int repaint)
 	{
 		m.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
 		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp, &m.img.lsize, &m.img.endian);
+
 		m.x1 = -2.1;
 		m.y1 = -1.2;
 		m.x2 = 0.6;
 		m.y2 = 1.2;
-		if (X_WIN > Y_WIN)
-			m.zoom = Y_WIN / 2.4;
-		else
-			m.zoom = X_WIN / 2.7;
-		m.ite_max = 50.0;
+
+		m.ite_max = 50.0 + f->event.mouse.zoom / 10;
+
+		m.zoom = X_WIN > Y_WIN ? (Y_WIN / 2.4) + f->event.mouse.zoom : X_WIN / 2.7 + f->event.mouse.zoom;
 		m.image_x = (m.x2 - m.x1) * m.zoom;
 		m.image_y = (m.y2 - m.y1) * m.zoom;
 		x = 0;
@@ -56,8 +56,8 @@ void draw_mandelbrot(t_f *f, int repaint)
 			y = 0;
 			while (y < m.image_y)
 			{
-				m.c_r = x / m.zoom + m.x1;
-				m.c_i = y / m.zoom + m.y1;
+				m.c_r = X_WIN > Y_WIN ? x / m.zoom - 1.2 * ((double)X_WIN / (double)Y_WIN) : x / m.zoom - 1.35;
+				m.c_i = X_WIN > Y_WIN ? y / m.zoom - 1.2 : y / m.zoom - 1.35 * ((double)Y_WIN / (double)X_WIN);
 				m.z_r = 0;
 				m.z_i = 0;
 				i = 0;

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 05:08:00 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/20 06:51:22 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,9 @@ int					check_draw(int x, int y, int x_img, int y_img);
 */
 t_mlx				init_win(t_mlx mlx, char *win_name);
 
+/*
+** display a yellow cross on the center on he screen
+*/
+
+void				display_cross(t_mlx mlx);
 #endif
