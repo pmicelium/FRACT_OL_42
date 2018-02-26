@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 06:21:25 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 06:08:22 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/26 22:00:44 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 int				mouse_mandel(int button, int x, int y, t_f *f)
 {
-	if (button == WHEEL_UP || button == MOUSE_LF)
+	if (button == MOUSE_LF)
+	{
+		f->flags.mandel_repaint = NEW;
+		f->event.mouse.x = x;
+		f->event.mouse.y = y;
+	}
+	if (button == WHEEL_UP)
 	{
 		f->event.mouse.zoom += 10;
 		f->flags.mandel_repaint = NEW;
 		f->event.mouse.x = x;
 		f->event.mouse.y = y;
 	}
-	if (button == WHEEL_DW || button == MOUSE_RG)
+	if (button == WHEEL_DW)
 	{
 		f->event.mouse.zoom -= 10;
 		f->flags.mandel_repaint = NEW;
