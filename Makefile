@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/01/14 02:47:46 by pmiceli           #+#    #+#              #
-#    Updated: 2018/02/20 06:37:52 by pmiceli          ###   ########.fr        #
+#    Created: 2018/02/28 17:43:26 by pmiceli           #+#    #+#              #
+#    Updated: 2018/02/28 18:16:46 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   draw/choice/display_choice.c draw/choice/motion_choice.c\
 		   draw/choice/mouse_choice.c draw/mandelbrot/draw_mandelbrot.c\
 		   draw/mandelbrot/key_mandel.c draw/mandelbrot/mouse_mandel.c\
-		   draw/julia/draw_julia.c
+		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
+		   draw/julia/motion_julia.c\
 
 
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))

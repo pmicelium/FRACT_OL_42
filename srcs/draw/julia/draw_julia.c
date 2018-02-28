@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_julia.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/02/28 18:37:51 by pmiceli          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "julia.h"
 
 static int			set_color(t_julia j, int i)
@@ -31,6 +43,27 @@ static t_julia	init_julia(t_julia j)
 	return (j);
 }
 
+static void		zoom_julia(t_julia *j, t_f *f)
+{
+	double				x_zoom;
+	double				y_zoom;
+	static double		zoom = 0.78;
+
+	x_zoom = f->event.mouse.x / j->zoom_x + j->x1;
+	y_zoom = f->event.mouse.y / j->zoom_y + j->y1;
+	j->x1 = x_zoom - f->event.mouse.zoom;
+	j->x2 = x_zoom + f->event.mouse.zoom;
+	j->y1 = y_zoom - f->event.mouse.zoom;
+	j->y2 = y_zoom + f->event.mouse.zoom;
+	j->zoom_x = X_WIN / (j->x2 - j->x1);
+	j->zoom_y = Y_WIN / (j->y2 - j->y1);
+	if (f->event.mouse.zoom >= zoom)
+		j->ite_max -= f->event.key.nb_ite;
+	else
+		j->ite_max += f->event.key.nb_ite;
+	f->event.mouse.flag = 0;
+}
+
 void			draw_julia(t_f *f, int repaint)
 {
 	static t_julia		j;
@@ -47,6 +80,8 @@ void			draw_julia(t_f *f, int repaint)
 		j.img.data = (int*)mlx_get_data_addr(j.img.ptr, &j.img.bpp,
 				&j.img.lsize, &j.img.endian);
 		x = 0;
+		if (f->event.mouse.flag == 1)
+			zoom_julia(&j, f);
 		while (x < X_WIN)
 		{
 			y = 0;

@@ -30,10 +30,19 @@ static int			set_color(t_mandel m, int i)
 
 static t_mandel		mandel_init(t_mandel m)
 {
-	m.x1 = -2.1;
-	m.x2 = 0.6;
-	m.y1 = -1.2;
-	m.y2 = 1.2;
+	double		fx;
+	double		fy;
+
+	fx = 1;
+	fy = 1;
+	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
+		fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+	else
+		fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
+	m.x1 = (-2.1 + 0.75) * fx - 0.75;
+	m.x2 = (0.6 + 0.75) * fx - 0.75;
+	m.y1 = -1.2 * fy;
+	m.y2 = 1.2 * fy;
 	m.zoom_x = X_WIN / (m.x2 - m.x1);
 	m.zoom_y = Y_WIN / (m.y2 - m.y1);
 	m.ite_max = 50.0;
