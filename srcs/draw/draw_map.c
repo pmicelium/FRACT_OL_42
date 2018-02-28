@@ -21,6 +21,11 @@ void			draw_map(t_f *f, int fract)
 		else
 			draw_mandelbrot(f, REPAINT);
 	}
-//	if (fract == JULIA)
-//		draw_julia(f);
+	if (fract == JULIA)
+	{
+		if (f->flags.julia_repaint == 0)
+			draw_julia(f, NEW);
+		else
+			draw_julia(f, REPAINT);
+	}
 }

@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+
 /*                                                        :::      ::::::::   */
 /*   draw_mandelbrot.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -59,6 +60,7 @@ static void			zoom_mandel(t_mandel *m, t_f *f)
 		m->ite_max -= f->event.key.nb_ite;
 	else
 		m->ite_max += f->event.key.nb_ite;
+	f->event.mouse.flag = 0;
 }
 
 void				draw_mandelbrot(t_f *f, int repaint)
@@ -77,7 +79,8 @@ void				draw_mandelbrot(t_f *f, int repaint)
 		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp,
 				&m.img.lsize, &m.img.endian);
 		x = 0;
-		zoom_mandel(&m, f);
+		if (f->event.mouse.flag == 1)
+			zoom_mandel(&m, f);
 		while (x < X_WIN)
 		{
 			y = 0;
@@ -93,7 +96,7 @@ void				draw_mandelbrot(t_f *f, int repaint)
 				{
 					tmp = m.z_r;
 					m.z_r = m.z_r * m.z_r - m.z_i * m.z_i + m.c_r;
-					m.z_i = 2 * m.z_i * tmp +  m.c_i;
+					m.z_i = 2 * m.z_i * tmp + m.c_i;
 					i++;
 				}
 				if (i != m.ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)

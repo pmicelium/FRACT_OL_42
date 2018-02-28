@@ -25,12 +25,8 @@ typedef struct		s_mandel
 	double			c_i;
 	double			z_r;
 	double			z_i;
-	double			zx;
-	double			zy;
 	double			zoom_x;
 	double			zoom_y;
-	double			image_x;
-	double			image_y;
 	double			ite_max;
 	double			k;
 	struct s_img	img;

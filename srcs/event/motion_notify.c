@@ -12,17 +12,9 @@
 
 #include "event.h"
 
-static int		motion_fract(int x, int y, t_f *f)
-{
-	if (f->fract == MANDEL)
-		motion_mandel(x, y, f);
-	return (0);
-}
-
 int				motion_notify(int x, int y, t_f *f)
 {
 	if (f->flags.map == 0)
 		motion_choice(x, y, f);
-	motion_fract(x, y, f);
 	return (0);
 }

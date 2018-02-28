@@ -12,6 +12,8 @@
 
 #include "mandelbrot.h"
 
+//pas encore de translation dans le mandelbrot
+
 int				key_mandel(int keycode, t_f *f)
 {
 	if (keycode == KEY_W)

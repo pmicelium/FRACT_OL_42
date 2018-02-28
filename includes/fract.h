@@ -34,6 +34,7 @@
 */
 typedef struct			s_mouse
 {
+	int					flag;
 	double				zoom;
 	double				x;
 	double				y;
@@ -74,6 +75,7 @@ typedef struct			s_flags
 	int					map;
 	int					display_repaint;
 	int					mandel_repaint;
+	int					julia_repaint;
 	struct s_fr			fr;
 }						t_flags;
 
@@ -109,7 +111,8 @@ int					motion_mandel(int x, int y, t_f *f);
 /*
 ** draw foncts
 */
-void				draw_mandelbrot(t_f *f, int destroy);
+void				draw_mandelbrot(t_f *f, int repaint);
+void				draw_julia(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
 void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
 
