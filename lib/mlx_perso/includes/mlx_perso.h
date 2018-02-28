@@ -15,8 +15,8 @@
 # include "mlx_define.h"
 
 # define MLX_PERSO_H
-# define X_WIN 1920
-# define Y_WIN 1080
+# define X_WIN 1080
+# define Y_WIN 800
 
 /*
 ** color's defines

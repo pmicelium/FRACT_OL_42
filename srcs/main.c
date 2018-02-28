@@ -43,9 +43,9 @@ void			set_var(t_f *f)
 	f->flags.mandel_repaint = 0;
 	f->flags.fr.mandel = 0;
 	f->flags.fr.julia = 0;
-	f->event.mouse.zoom = 0;
-	f->event.mouse.x = 0;
-	f->event.mouse.y = 0;
+	f->event.mouse.zoom = 0.78;
+	f->event.mouse.x = X_WIN / 2;
+	f->event.mouse.y = Y_WIN / 2;
 	f->event.motion.x = 0;
 	f->event.motion.y = 0;
 	f->event.key.tr_h = 0;

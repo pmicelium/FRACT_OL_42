@@ -12,7 +12,7 @@
 
 #include "mandelbrot.h"
 
-static int			set_color(t_mandel m, int i)
+static int		set_color(t_mandel m, int i)
 {
 	int		color;
 	int		r;
@@ -27,52 +27,48 @@ static int			set_color(t_mandel m, int i)
 	return (color);
 }
 
-static t_mandel		mandel_init(t_mandel m)
-{
-	m.x1 = -2.1;
-	m.x2 = 0.6;
-	m.y1 = -1.2;
-	m.y2 = 1.2;
-	m.zoom_x = X_WIN / (m.x2 - m.x1);
-	m.zoom_y = Y_WIN / (m.y2 - m.y1);
-	m.ite_max = 50.0;
-	m.k = 0.78;
-	return (m);
-}
-
-void				draw_mandelbrot(t_f *f, int repaint)
+void			draw_mandelbrot(t_f *f, int repaint)
 {
 	static t_mandel		m;
 	int					x;
 	int					y;
 	int					i;
-	double				x_zoom;
-	double				y_zoom;
+	double				x_mouse;
+	double				y_mouse;
 	double				tmp;
 
-	if (!m.x1)
-		m = mandel_init(m);
 	if (repaint == NEW)
 	{
 		m.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
 		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp, &m.img.lsize, &m.img.endian);
+
+		m.x1 = -2.1;
+		m.x2 = 0.6;
+		m.y1 = -1.2;
+		m.y2 = 1.2;
+
+		m.ite_max = 50.0 + f->event.mouse.zoom / 10;
+
+		m.zoom = X_WIN > Y_WIN ? (Y_WIN / 2.4) + f->event.mouse.zoom : X_WIN / 2.7 + f->event.mouse.zoom;
+		m.image_x = (m.x2 - m.x1) * m.zoom;
+		m.image_y = (m.y2 - m.y1) * m.zoom;
 		x = 0;
-		x_zoom = f->event.mouse.x / m.zoom_x + m.x1;
-		y_zoom = f->event.mouse.y / m.zoom_y + m.y1;
-		m.x1 = x_zoom - f->event.mouse.zoom;
-		m.x2 = x_zoom + f->event.mouse.zoom;
-		m.y1 = y_zoom - f->event.mouse.zoom;
-		m.y2 = y_zoom + f->event.mouse.zoom;
-		m.zoom_x = X_WIN / (m.x2 - m.x1);
-		m.zoom_y = Y_WIN / (m.y2 - m.y1);
-		m.ite_max += 2;
-		while (x < X_WIN)
+
+		x_mouse = ((f->event.mouse.x * ((double)X_WIN / m.zoom)) / (double)X_WIN) + 0.48;
+		y_mouse = -((f->event.mouse.y * ((double)Y_WIN / m.zoom)) / (double)Y_WIN);
+		x_mouse -= 2.1;
+		y_mouse += 1.2;
+
+		printf("x_mouse : %f, y_mouse :  %f\n", x_mouse, y_mouse);
+		while (x < m.image_x)
 		{
 			y = 0;
-			while (y < Y_WIN)
+			while (y < m.image_y)
 			{
-				m.c_r = x / m.zoom_x + m.x1;
-				m.c_i = y / m.zoom_y + m.y1;
+				m.c_r = X_WIN > Y_WIN ? x / m.zoom - 1.2 * ((double)X_WIN / (double)Y_WIN) : x / m.zoom - 1.35;
+				m.c_i = X_WIN > Y_WIN ? y / m.zoom - 1.2 : y / m.zoom - 1.35 * ((double)Y_WIN / (double)X_WIN);
+				m.c_r += x_mouse;
+				m.c_i -= y_mouse;
 				m.z_r = 0;
 				m.z_i = 0;
 				i = 0;

@@ -14,6 +14,9 @@
 # define MANDELBROT_H
 # include "../../../includes/fract.h"
 
+# define IN 1
+# define OUT 2
+
 typedef struct		s_mandel
 {
 	int				init;
@@ -27,10 +30,12 @@ typedef struct		s_mandel
 	double			z_i;
 	double			zx;
 	double			zy;
-	double			zoom;
+	double			zoom_x;
+	double			zoom_y;
 	double			image_x;
 	double			image_y;
 	double			ite_max;
+	double			k;
 	struct s_img	img;
 }					t_mandel;
 

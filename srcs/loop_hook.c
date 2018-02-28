@@ -25,6 +25,5 @@ int						loop_hook(t_f *f)
 	else
 		draw_map(f, f->fract);
 	fps(f);
-	display_cross(f->mlx);
 	return (0);
 }

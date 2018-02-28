@@ -28,6 +28,7 @@
 # define NEW 0
 # define REPAINT 1
 # define DESTROY 2
+# define PRINT 3
 
 /*
 ** Event's structs
