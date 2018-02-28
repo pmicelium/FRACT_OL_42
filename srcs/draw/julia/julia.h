@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:04 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 22:40:31 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 23:01:52 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct		s_julia
 	double			zoom_y;
 	double			ite_max;
 	double			k;
+	double			fx;
+	double			fy;
 	struct s_img	img;
 }					t_julia;
 

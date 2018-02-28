@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 22:39:58 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 22:58:20 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,16 @@ static int			set_color(t_mandel m, int i)
 
 static t_mandel		mandel_init(t_mandel m)
 {
-	double		fx;
-	double		fy;
-
-	fx = 1;
-	fy = 1;
+	m.fx = 1;
+	m.fy = 1;
 	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+		m.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
 	else
-		fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
-	m.x1 = (-2.1 + 0.75) * fx - 0.75;
-	m.x2 = (0.6 + 0.75) * fx - 0.75;
-	m.y1 = -1.2 * fy;
-	m.y2 = 1.2 * fy;
+		m.fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
+	m.x1 = (-2.1 + 0.75) * m.fx - 0.75;
+	m.x2 = (0.6 + 0.75) * m.fx - 0.75;
+	m.y1 = -1.2 * m.fy;
+	m.y2 = 1.2 * m.fy;
 	m.zoom_x = X_WIN / (m.x2 - m.x1);
 	m.zoom_y = Y_WIN / (m.y2 - m.y1);
 	m.ite_max = 50.0;
@@ -58,10 +55,10 @@ static void			zoom_mandel(t_mandel *m, t_f *f)
 
 	x_zoom = f->event.mouse.x / m->zoom_x + m->x1;
 	y_zoom = f->event.mouse.y / m->zoom_y + m->y1;
-	m->x1 = x_zoom - f->event.mouse.zoom;
-	m->x2 = x_zoom + f->event.mouse.zoom;
-	m->y1 = y_zoom - f->event.mouse.zoom;
-	m->y2 = y_zoom + f->event.mouse.zoom;
+	m->x1 = x_zoom - f->event.mouse.zoom * m->fx;
+	m->x2 = x_zoom + f->event.mouse.zoom * m->fx;
+	m->y1 = (y_zoom - f->event.mouse.zoom) * m->fy;
+	m->y2 = (y_zoom + f->event.mouse.zoom) * m->fy;
 	m->zoom_x = X_WIN / (m->x2 - m->x1);
 	m->zoom_y = Y_WIN / (m->y2 - m->y1);
 	if (f->event.mouse.zoom >= zoom)

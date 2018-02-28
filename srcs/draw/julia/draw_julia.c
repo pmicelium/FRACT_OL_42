@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 22:45:42 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 23:07:07 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@ static int		set_color(t_julia j, int i)
 
 static t_julia	init_julia(t_julia j)
 {
-	j.x1 = 2.1;
-	j.x2 = -2.1;
+	j.fx = 1;
+	j.fy = 1;
+	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
+		j.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+	else
+		j.fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
+	j.x1 = -2.1;
+	j.x2 = 2.1;
 	j.y1 = -1.2;
 	j.y2 = 1.2;
 	j.c_r = 0.285;
@@ -51,10 +57,10 @@ static void		zoom_julia(t_julia *j, t_f *f)
 
 	x_zoom = f->event.mouse.x / j->zoom_x + j->x1;
 	y_zoom = f->event.mouse.y / j->zoom_y + j->y1;
-	j->x1 = x_zoom - f->event.mouse.zoom;
-	j->x2 = x_zoom + f->event.mouse.zoom;
-	j->y1 = y_zoom - f->event.mouse.zoom;
-	j->y2 = y_zoom + f->event.mouse.zoom;
+	j->x1 = (x_zoom - f->event.mouse.zoom) * j->fx;
+	j->x2 = (x_zoom + f->event.mouse.zoom) * j->fx;
+	j->y1 = (y_zoom - f->event.mouse.zoom) * j->fy;
+	j->y2 = (y_zoom + f->event.mouse.zoom) * j->fy;
 	j->zoom_x = X_WIN / (j->x2 - j->x1);
 	j->zoom_y = Y_WIN / (j->y2 - j->y1);
 	if (f->event.mouse.zoom >= zoom)

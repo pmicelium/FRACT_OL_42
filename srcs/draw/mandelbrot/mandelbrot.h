@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 06:42:48 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 22:55:51 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct		s_mandel
 	double			zoom_y;
 	double			ite_max;
 	double			k;
+	double			fx;
+	double			fy;
 	struct s_img	img;
 }					t_mandel;
 
