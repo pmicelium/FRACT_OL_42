@@ -20,6 +20,7 @@ static void		key_fract(int keycode, t_f *f)
 
 int				key_fonct(int keycode, t_f *f)
 {
+	ft_putnbr_endl(keycode);
 	if (keycode == KEY_ESC)
 	{
 		ft_putendl_color("exiting ...", "green");
@@ -28,7 +29,7 @@ int				key_fonct(int keycode, t_f *f)
 		mlx_destroy_window(f->mlx.ptr, f->mlx.win);
 		exit(1);
 	}
-	if (keycode == 50 && f->flags.map == 1)
+	if (keycode == KEY_TILDE && f->flags.map == 1)
 	{
 		destroy_fract(f);
 		mlx_clear_window(f->mlx.ptr, f->mlx.win);

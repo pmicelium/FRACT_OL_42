@@ -22,7 +22,6 @@ int				mouse_mandel(int button, int x, int y, t_f *f)
 	}
 	if (button == WHEEL_UP || button ==  MOUSE_LF)
 	{
-		ft_putendl_color("test", "green");
 		f->event.mouse.zoom *= 0.5;
 		f->flags.mandel_repaint = NEW;
 		f->event.mouse.x = x;
@@ -30,7 +29,6 @@ int				mouse_mandel(int button, int x, int y, t_f *f)
 	}
 	if (button == WHEEL_DW || button == MOUSE_RG)
 	{
-		ft_putendl_color("test", "red");
 		f->event.mouse.zoom /= 0.5;
 		f->flags.mandel_repaint = NEW;
 		f->event.mouse.x = x;

@@ -55,7 +55,8 @@ void				draw_mandelbrot(t_f *f, int repaint)
 	if (repaint == NEW)
 	{
 		m.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
-		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp, &m.img.lsize, &m.img.endian);
+		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp,
+				&m.img.lsize, &m.img.endian);
 		x = 0;
 		x_zoom = f->event.mouse.x / m.zoom_x + m.x1;
 		y_zoom = f->event.mouse.y / m.zoom_y + m.y1;
@@ -65,7 +66,7 @@ void				draw_mandelbrot(t_f *f, int repaint)
 		m.y2 = y_zoom + f->event.mouse.zoom;
 		m.zoom_x = X_WIN / (m.x2 - m.x1);
 		m.zoom_y = Y_WIN / (m.y2 - m.y1);
-		m.ite_max += 2;
+		m.ite_max += f->event.key.nb_ite;
 		while (x < X_WIN)
 		{
 			y = 0;
@@ -76,7 +77,8 @@ void				draw_mandelbrot(t_f *f, int repaint)
 				m.z_r = 0;
 				m.z_i = 0;
 				i = 0;
-				while ((m.z_r * m.z_r + m.z_i * m.z_i < 4 && i < m.ite_max) || i == 0)
+				while ((m.z_r * m.z_r + m.z_i * m.z_i < 4 && i < m.ite_max)
+						|| i == 0)
 				{
 					tmp = m.z_r;
 					m.z_r = m.z_r * m.z_r - m.z_i * m.z_i + m.c_r;

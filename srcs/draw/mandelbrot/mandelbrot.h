@@ -14,9 +14,6 @@
 # define MANDELBROT_H
 # include "../../../includes/fract.h"
 
-# define IN 1
-# define OUT 2
-
 typedef struct		s_mandel
 {
 	int				init;

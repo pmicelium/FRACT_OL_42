@@ -50,6 +50,7 @@ void			set_var(t_f *f)
 	f->event.motion.y = 0;
 	f->event.key.tr_h = 0;
 	f->event.key.tr_v = 0;
+	f->event.key.nb_ite = 3;
 }
 
 int				main(int argc, char *argv[])

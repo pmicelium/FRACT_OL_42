@@ -44,6 +44,7 @@ typedef struct			s_key
 {
 	double				tr_h;
 	double				tr_v;
+	double				nb_ite;
 }						t_key;
 
 typedef struct			s_motion
