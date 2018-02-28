@@ -14,14 +14,14 @@
 
 int				mouse_choice(int button, int x, int y, t_f *f)
 {
-	if (button == 1 && x < 600 & y > Y_WIN / 3)
+	if (button == 1 && x < X_WIN / 3 & y > Y_WIN / 3)
 	{
 		f->fract = MANDEL;
 		f->flags.map = 1;
 		ft_putendl("Mandelbrot");
 		display_choice(f, 2);
 	}
-	if (button == 1 && x > 600 && x < 1200 && y > Y_WIN / 3)
+	if (button == 1 && x > X_WIN / 3 && x < 2 * X_WIN / 3 && y > Y_WIN / 3)
 	{
 		f->fract = JULIA;
 		f->flags.map = 1;

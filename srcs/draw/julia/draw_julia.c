@@ -12,7 +12,6 @@ static int			set_color(t_julia j, int i)
 	g = 0;
 	b = i * 255 / j.ite_max;
 	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
-//	ft_putnbr_endl(i);
 	return (color);
 }
 
