@@ -36,8 +36,29 @@ static t_mandel		mandel_init(t_mandel m)
 	m.zoom_x = X_WIN / (m.x2 - m.x1);
 	m.zoom_y = Y_WIN / (m.y2 - m.y1);
 	m.ite_max = 50.0;
-	m.k = 0.78;
+	m.k = 1;
+	m.init = 1;
 	return (m);
+}
+
+static void			zoom_mandel(t_mandel *m, t_f *f)
+{
+	double				x_zoom;
+	double				y_zoom;
+	static double		zoom = 0.78;
+
+	x_zoom = f->event.mouse.x / m->zoom_x + m->x1;
+	y_zoom = f->event.mouse.y / m->zoom_y + m->y1;
+	m->x1 = x_zoom - f->event.mouse.zoom;
+	m->x2 = x_zoom + f->event.mouse.zoom;
+	m->y1 = y_zoom - f->event.mouse.zoom;
+	m->y2 = y_zoom + f->event.mouse.zoom;
+	m->zoom_x = X_WIN / (m->x2 - m->x1);
+	m->zoom_y = Y_WIN / (m->y2 - m->y1);
+	if (f->event.mouse.zoom >= zoom)
+		m->ite_max -= f->event.key.nb_ite;
+	else
+		m->ite_max += f->event.key.nb_ite;
 }
 
 void				draw_mandelbrot(t_f *f, int repaint)
@@ -46,11 +67,9 @@ void				draw_mandelbrot(t_f *f, int repaint)
 	int					x;
 	int					y;
 	int					i;
-	double				x_zoom;
-	double				y_zoom;
 	double				tmp;
 
-	if (!m.x1)
+	if (!m.init)
 		m = mandel_init(m);
 	if (repaint == NEW)
 	{
@@ -58,15 +77,7 @@ void				draw_mandelbrot(t_f *f, int repaint)
 		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp,
 				&m.img.lsize, &m.img.endian);
 		x = 0;
-		x_zoom = f->event.mouse.x / m.zoom_x + m.x1;
-		y_zoom = f->event.mouse.y / m.zoom_y + m.y1;
-		m.x1 = x_zoom - f->event.mouse.zoom;
-		m.x2 = x_zoom + f->event.mouse.zoom;
-		m.y1 = y_zoom - f->event.mouse.zoom;
-		m.y2 = y_zoom + f->event.mouse.zoom;
-		m.zoom_x = X_WIN / (m.x2 - m.x1);
-		m.zoom_y = Y_WIN / (m.y2 - m.y1);
-		m.ite_max += f->event.key.nb_ite;
+		zoom_mandel(&m, f);
 		while (x < X_WIN)
 		{
 			y = 0;

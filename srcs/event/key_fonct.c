@@ -20,7 +20,6 @@ static void		key_fract(int keycode, t_f *f)
 
 int				key_fonct(int keycode, t_f *f)
 {
-	ft_putnbr_endl(keycode);
 	if (keycode == KEY_ESC)
 	{
 		ft_putendl_color("exiting ...", "green");

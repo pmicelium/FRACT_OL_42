@@ -20,14 +20,14 @@ int				mouse_mandel(int button, int x, int y, t_f *f)
 		f->event.mouse.x = x;
 		f->event.mouse.y = y;
 	}
-	if (button == WHEEL_UP || button ==  MOUSE_LF)
+	if (button == WHEEL_UP)
 	{
 		f->event.mouse.zoom *= 0.5;
 		f->flags.mandel_repaint = NEW;
 		f->event.mouse.x = x;
 		f->event.mouse.y = y;
 	}
-	if (button == WHEEL_DW || button == MOUSE_RG)
+	if (button == WHEEL_DW)
 	{
 		f->event.mouse.zoom /= 0.5;
 		f->flags.mandel_repaint = NEW;
