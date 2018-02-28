@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:04 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 17:41:12 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 22:40:31 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef JULIA_H
 # define JULIA_H
-#include "../../../includes/fract.h"
+# include "../../../includes/fract.h"
 
 typedef struct		s_julia
 {

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:59:09 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 18:37:39 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 22:49:31 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 int				mouse_julia(int button, int x, int y, t_f *f)
 {
+	if (button == MOUSE_RG)
+	{
+		if (f->event.motion.flag == 1)
+			f->event.motion.flag = 0;
+		else
+			f->event.motion.flag = 1;
+		f->flags.julia_repaint = NEW;
+	}
 	if (button == WHEEL_UP)
 	{
 		f->event.mouse.zoom *= 0.5;

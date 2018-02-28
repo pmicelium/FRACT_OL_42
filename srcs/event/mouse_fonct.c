@@ -6,12 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:15:18 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 18:34:13 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 22:45:21 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "event.h"
-
 
 int				mouse_fonct(int button, int x, int y, t_f *f)
 {

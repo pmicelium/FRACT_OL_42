@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/06 04:01:47 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 19:16:04 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			set_var(t_f *f)
 	f->event.mouse.y = Y_WIN / 2;
 	f->event.motion.x = 0;
 	f->event.motion.y = 0;
+	f->event.motion.flag = 1;
 	f->event.key.tr_h = 0;
 	f->event.key.tr_v = 0;
 	f->event.key.nb_ite = 7;

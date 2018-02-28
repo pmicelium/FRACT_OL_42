@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 18:37:51 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 22:45:42 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "julia.h"
 
-static int			set_color(t_julia j, int i)
+static int		set_color(t_julia j, int i)
 {
 	int		color;
 	int		r;
@@ -64,6 +64,13 @@ static void		zoom_julia(t_julia *j, t_f *f)
 	f->event.mouse.flag = 0;
 }
 
+static void		change_c(t_julia *j, t_f *f)
+{
+	TEST;
+	j->c_r = (f->event.motion.x * ((double)X_WIN / j->zoom_x)) / X_WIN;
+	j->c_i = (f->event.motion.y * ((double)Y_WIN / j->zoom_y)) / Y_WIN;
+}
+
 void			draw_julia(t_f *f, int repaint)
 {
 	static t_julia		j;
@@ -80,6 +87,8 @@ void			draw_julia(t_f *f, int repaint)
 		j.img.data = (int*)mlx_get_data_addr(j.img.ptr, &j.img.bpp,
 				&j.img.lsize, &j.img.endian);
 		x = 0;
+		if (f->event.motion.flag == 1)
+			change_c(&j, f);
 		if (f->event.mouse.flag == 1)
 			zoom_julia(&j, f);
 		while (x < X_WIN)

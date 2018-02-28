@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 17:59:36 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/02/28 19:18:24 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ typedef struct			s_key
 {
 	double				tr_h;
 	double				tr_v;
-	double				nb_ite;
+	double				nb_ite; //a rajouter
 }						t_key;
 
 typedef struct			s_motion
 {
+	int					flag;
 	double				x;
 	double				y;
 }						t_motion;
@@ -105,6 +106,7 @@ int					motion_choice(int x, int y, t_f *f);
 int					mouse_fonct(int button, int x, int y, t_f *f);
 int					mouse_choice(int button, int x, int y, t_f *f);
 int					key_mandel(int keycode, t_f *f);
+int					key_julia(int keycode, t_f *f);
 int					mouse_mandel(int button, int x, int y, t_f *f);
 int					mouse_julia(int button, int x, int y, t_f *f);
 int					motion_julia(int x, int y, t_f *f);

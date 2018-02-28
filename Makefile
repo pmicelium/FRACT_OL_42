@@ -6,7 +6,7 @@
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 17:43:26 by pmiceli           #+#    #+#              #
-#    Updated: 2018/02/28 18:16:46 by pmiceli          ###   ########.fr        #
+#    Updated: 2018/02/28 19:11:14 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ MLX_PERSO_DIR = ./lib/mlx_perso/
 MLX_PERSO = ./lib/mlx_perso/mlx_perso.a
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 MLX_FLAGS = -framework OpenGL -framework AppKit
 
 PRINT = "make[1]: Nothing to be done for 'all'"

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   motion_julia.c                                     :+:      :+:    :+:   */
+/*   key_julia.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/28 17:57:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 22:41:17 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/02/28 19:18:06 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/02/28 20:24:17 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "julia.h"
 
-int				motion_julia(int x, int y, t_f *f)
+int				key_julia(int keycode, t_f *f)
 {
-	if (x != y)
-		f->do_nothing = 0;
-	if (f->event.motion.flag == 1)
-	{
-		f->event.motion.x = x;
-		f->event.motion.y = y;
-		f->flags.julia_repaint = NEW;
-	}
+	if (keycode == 2)
+		f->do_nothing = 1;
 	return (0);
 }
