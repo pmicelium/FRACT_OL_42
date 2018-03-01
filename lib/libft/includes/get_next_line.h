@@ -3,17 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hbouillo <hbouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:42:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/15 20:37:25 by pmiceli          ###   ########.fr       */
+/*   Created: 2017/11/13 00:58:13 by hbouillo          #+#    #+#             */
+/*   Updated: 2018/03/01 19:25:52 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 5000000
 
-int				get_next_line(const int fd, char **line);
+# include <limits.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
+
+# define GNL_EOL 1
+# define GNL_EOF 0
+# define GNL_ERR -1
+
+# define BUFF_SIZE 4000
+
+typedef struct		s_reader
+{
+	int				ret;
+	int				eof;
+	char			*bgn;
+	char			*end;
+	char			buf[BUFF_SIZE];
+}					t_reader;
+
+int					get_next_line(const int fd, char **line);
 
 #endif

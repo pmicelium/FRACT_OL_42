@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_ship.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/03/01 19:48:56 by pmiceli          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ship.h"
 
 static int		set_color(t_ship s, int i)
@@ -17,19 +29,20 @@ static int		set_color(t_ship s, int i)
 
 static t_ship	init_ship(t_ship s)
 {
+	TEST;
 	s.fx = 1;
 	s.fy = 1;
-	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		s.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+	if (((double)X_WIN) / ((double)Y_WIN) < 3.5 / 2.0)
+		s.fy = ((double)Y_WIN / 200) / ((double)X_WIN / 350);
 	else
-		s.fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
-	s.x1 = -2.1;
-	s.x2 = 0.39;
-	s.y1 = -2.5;
-	s.y2 = 0.5;
+		s.fx = ((double)X_WIN / 350) / ((double)Y_WIN / 200);
+	s.x1 = -2.1 * s.fx;
+	s.x2 = 1 * s.fx;
+	s.y1 = -1 * s.fy;
+	s.y2 = 1 * s.fy;
 	s.zoom_x = X_WIN / (s.x2 - s.x1);
 	s.zoom_y = Y_WIN / (s.y2 - s.y2);
-	s.ite_max = 50.0;
+	s.ite_max = 500.0;
 	s.k = 1;
 	s.init = 1;
 	return (s);

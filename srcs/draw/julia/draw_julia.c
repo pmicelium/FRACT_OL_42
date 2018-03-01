@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 23:07:07 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/01 21:32:32 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ static int		set_color(t_julia j, int i)
 	g = 0;
 	b = i * 255 / j.ite_max;
 	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
-	return (color);
+	return (BLUE);
 }
 
 static t_julia	init_julia(t_julia j)
 {
 	j.fx = 1;
 	j.fy = 1;
-	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		j.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+	if (((double)X_WIN) / ((double)Y_WIN) < 4.2 / 2.4)
+		j.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 420);
 	else
-		j.fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
-	j.x1 = -2.1;
-	j.x2 = 2.1;
-	j.y1 = -1.2;
-	j.y2 = 1.2;
+		j.fx = ((double)X_WIN / 420) / ((double)Y_WIN / 240);
+	j.x1 = -2.1 * j.fx;
+	j.x2 = 2.1 * j.fx;
+	j.y1 = -1.2 * j.fy;
+	j.y2 = 1.2 * j.fy;
 	j.c_r = 0.285;
 	j.c_i = 0.01;
 	j.zoom_x = X_WIN / (j.x2 - j.x1);
@@ -53,7 +53,7 @@ static void		zoom_julia(t_julia *j, t_f *f)
 {
 	double				x_zoom;
 	double				y_zoom;
-	static double		zoom = 0.78;
+	static double		zoom = 0.76;
 
 	x_zoom = f->event.mouse.x / j->zoom_x + j->x1;
 	y_zoom = f->event.mouse.y / j->zoom_y + j->y1;

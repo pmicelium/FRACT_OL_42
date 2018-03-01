@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 17:42:58 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/01 19:35:11 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # include "mlx_define.h"
 
 # define MLX_PERSO_H
-//# define X_WIN 1920
-//# define Y_WIN 1080
-# define X_WIN 1080
-# define Y_WIN 800
+# define X_WIN 1920
+# define Y_WIN 1080
+//# define X_WIN 1080
+//# define Y_WIN 800
 
 /*
 ** color's defines

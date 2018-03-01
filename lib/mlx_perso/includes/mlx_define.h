@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 19:35:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 19:35:13 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/01 19:57:40 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@
 */
 # define MOUSE_LF 1
 # define MOUSE_RG 2
+# define WHEEL_PRESS 3
 # define WHEEL_UP 4
 # define WHEEL_DW 5
 
