@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/01 19:48:56 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 00:05:08 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int		set_color(t_ship s, int i)
 
 static t_ship	init_ship(t_ship s)
 {
-	TEST;
 	s.fx = 1;
 	s.fy = 1;
 	if (((double)X_WIN) / ((double)Y_WIN) < 3.5 / 2.0)

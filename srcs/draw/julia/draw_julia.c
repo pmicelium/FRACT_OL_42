@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/01 21:32:32 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 00:09:46 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static t_julia	init_julia(t_julia j)
 {
 	j.fx = 1;
 	j.fy = 1;
-	if (((double)X_WIN) / ((double)Y_WIN) < 4.2 / 2.4)
-		j.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 420);
+	if (((double)X_WIN) / ((double)Y_WIN) < 200 / 2.4)
+		j.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 200);
 	else
-		j.fx = ((double)X_WIN / 420) / ((double)Y_WIN / 240);
-	j.x1 = -2.1 * j.fx;
-	j.x2 = 2.1 * j.fx;
+		j.fx = ((double)X_WIN / 200) / ((double)Y_WIN / 240);
+	j.x1 = -1 * j.fx;
+	j.x2 = 1 * j.fx;
 	j.y1 = -1.2 * j.fy;
 	j.y2 = 1.2 * j.fy;
 	j.c_r = 0.285;
@@ -53,20 +53,21 @@ static void		zoom_julia(t_julia *j, t_f *f)
 {
 	double				x_zoom;
 	double				y_zoom;
-	static double		zoom = 0.76;
+	static double		zoom = 1;
 
 	x_zoom = f->event.mouse.x / j->zoom_x + j->x1;
 	y_zoom = f->event.mouse.y / j->zoom_y + j->y1;
-	j->x1 = (x_zoom - f->event.mouse.zoom) * j->fx;
-	j->x2 = (x_zoom + f->event.mouse.zoom) * j->fx;
-	j->y1 = (y_zoom - f->event.mouse.zoom) * j->fy;
-	j->y2 = (y_zoom + f->event.mouse.zoom) * j->fy;
+	j->x1 = x_zoom - f->event.mouse.zoom * j->fx;
+	j->x2 = x_zoom + f->event.mouse.zoom * j->fx;
+	j->y1 = y_zoom - f->event.mouse.zoom * j->fy;
+	j->y2 = y_zoom + f->event.mouse.zoom * j->fy;
 	j->zoom_x = X_WIN / (j->x2 - j->x1);
 	j->zoom_y = Y_WIN / (j->y2 - j->y1);
 	if (f->event.mouse.zoom >= zoom)
 		j->ite_max -= f->event.key.nb_ite;
 	else
 		j->ite_max += f->event.key.nb_ite;
+	zoom = f->event.mouse.zoom;
 	f->event.mouse.flag = 0;
 }
 
@@ -84,18 +85,24 @@ void			draw_julia(t_f *f, int repaint)
 	int					y;
 	int					i;
 	double				tmp;
+	static int			d = 0;
 
 	if (!j.init)
+	{
 		j = init_julia(j);
+		f->event.mouse.zoom /= 0.5;
+		f->event.mouse.zoom /= 0.5;
+		d = 0;
+	}
 	if (repaint == NEW)
 	{
 		j.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
 		j.img.data = (int*)mlx_get_data_addr(j.img.ptr, &j.img.bpp,
 				&j.img.lsize, &j.img.endian);
 		x = 0;
-		if (f->event.motion.flag == 1)
+		if (f->event.motion.flag == 1 && 2 > 3)
 			change_c(&j, f);
-		if (f->event.mouse.flag == 1)
+		if (f->event.mouse.flag == 1 || d == 0)
 			zoom_julia(&j, f);
 		while (x < X_WIN)
 		{
@@ -128,4 +135,5 @@ void			draw_julia(t_f *f, int repaint)
 		j.init = 0;
 		mlx_destroy_image(f->mlx.ptr, j.img.ptr);
 	}
+	d++;
 }

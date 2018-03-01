@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/01 21:42:05 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 00:05:01 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void			zoom_mandel(t_mandel *m, t_f *f)
 {
 	double				x_zoom;
 	double				y_zoom;
-	static double		zoom = 0.78;
+	static double		zoom = 1;
 
 	x_zoom = f->event.mouse.x / m->zoom_x + m->x1;
 	y_zoom = f->event.mouse.y / m->zoom_y + m->y1;
