@@ -119,6 +119,7 @@ int					motion_julia(int x, int y, t_f *f);
 */
 void				draw_mandelbrot(t_f *f, int repaint);
 void				draw_julia(t_f *f, int repaint);
+void				draw_ship(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
 void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
 

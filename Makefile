@@ -19,7 +19,7 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   draw/choice/mouse_choice.c draw/mandelbrot/draw_mandelbrot.c\
 		   draw/mandelbrot/key_mandel.c draw/mandelbrot/mouse_mandel.c\
 		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
-		   draw/julia/motion_julia.c\
+		   draw/julia/motion_julia.c draw/ship/draw_ship.c\
 
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/
@@ -42,7 +42,7 @@ MLX_PERSO_DIR = ./lib/mlx_perso/
 MLX_PERSO = ./lib/mlx_perso/mlx_perso.a
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 MLX_FLAGS = -framework OpenGL -framework AppKit
 
 PRINT = "make[1]: Nothing to be done for 'all'"

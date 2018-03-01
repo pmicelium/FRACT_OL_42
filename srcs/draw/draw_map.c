@@ -28,13 +28,11 @@ void			draw_map(t_f *f, int fract)
 		else
 			draw_julia(f, REPAINT);
 	}
-/*
 	if (fract == SHIP)
 	{
 		if (f->flags.ship_repaint == 0)
 			draw_ship(f, NEW);
 		else
-			draw_julia(f, REPAINT);
+			draw_ship(f, REPAINT);
 	}
-*/
 }

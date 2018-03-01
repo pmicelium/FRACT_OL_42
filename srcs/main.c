@@ -31,6 +31,12 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 		f->fract = JULIA;
 		return (1);
 	}
+	else if (ft_strcmp(argv[1], "Ship") == 0)
+	{
+		f->flags.map = 1;
+		f->fract = SHIP;
+		return (1);
+	}
 	return (2);
 }
 
