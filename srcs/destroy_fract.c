@@ -26,5 +26,10 @@ void			destroy_fract(t_f *f)
 		draw_julia(f, DESTROY);
 		set_var(f);
 	}
+	else if (f->fract == SHIP)
+	{
+	//	draw_ship(f, DESTROY);
+		set_var(f);
+	}
 	mlx_clear_window(f->mlx.ptr, f->mlx.win);
 }

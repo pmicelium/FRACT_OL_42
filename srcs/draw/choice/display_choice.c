@@ -40,6 +40,10 @@ static void		put_choice(t_f *f)
 		mlx_string_put(f->mlx.ptr, f->mlx.win, JUL_X - 20, JUL_Y,
 				GREY, ">       <");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, JUL_X, JUL_Y, GREY, "Julia");
+	if (f->flags.fr.ship == 1)
+		mlx_string_put(f->mlx.ptr, f->mlx.win, SHIP_X - 20, SHIP_Y,
+				GREY, ">      <");
+	mlx_string_put(f->mlx.ptr, f->mlx.win, SHIP_X, SHIP_Y, GREY, "Ship");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, 25, 25, GREY, "exit : ESC");
 }
 

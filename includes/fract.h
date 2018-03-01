@@ -21,6 +21,7 @@
 */
 # define MANDEL 1
 # define JULIA 2
+# define SHIP 3
 
 /*
 ** define draw
@@ -68,6 +69,7 @@ typedef struct			s_fr
 {
 	int					mandel;
 	int					julia;
+	int					ship;
 }						t_fr;
 
 typedef struct			s_flags
@@ -77,6 +79,7 @@ typedef struct			s_flags
 	int					display_repaint;
 	int					mandel_repaint;
 	int					julia_repaint;
+	int					ship_repaint;
 	struct s_fr			fr;
 }						t_flags;
 
@@ -133,4 +136,5 @@ void				set_var(t_f *f);
 ** fps fonct
 */
 void				fps(t_f *f);
+
 #endif

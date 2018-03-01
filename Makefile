@@ -21,12 +21,11 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
 		   draw/julia/motion_julia.c\
 
-
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/
 INCS = ./includes/fract.h ./srcs/draw/mandelbrot/mandelbrot.h\
 	   ./srcs/draw/choice/choice.h ./srcs/event/event.h ./srcs/fps/fps.h\
-	   ./srcs/draw/julia/julia.h
+	   ./srcs/draw/julia/julia.h ./srcs/draw/ship/ship.h\
 
 OBJS_DIR = ./objs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCNAMES:.c=.o))

@@ -72,9 +72,9 @@ static void		zoom_julia(t_julia *j, t_f *f)
 
 static void		change_c(t_julia *j, t_f *f)
 {
-	TEST;
-	j->c_r = (f->event.motion.x * ((double)X_WIN / j->zoom_x)) / X_WIN;
-	j->c_i = (f->event.motion.y * ((double)Y_WIN / j->zoom_y)) / Y_WIN;
+	//a changer
+	j->c_r = ((f->event.motion.x * ((double)X_WIN / j->zoom_x)) / X_WIN) * 2;
+	j->c_i = ((f->event.motion.y * ((double)Y_WIN / j->zoom_y)) / Y_WIN) * 2;
 }
 
 void			draw_julia(t_f *f, int repaint)

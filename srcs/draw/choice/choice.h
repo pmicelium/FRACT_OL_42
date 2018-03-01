@@ -21,12 +21,9 @@
 # define MAN_Y (Y_WIN / 3 + 50)
 # define JUL_X (3 * X_WIN / 6 - 15)
 # define JUL_Y (Y_WIN / 3 + 50)
+# define SHIP_X (5 * X_WIN / 6 - 25)
+# define SHIP_Y (Y_WIN / 3 + 50)
 
-/*
-** value for selection
-*/
-# define MANDEL 1
-# define JULIA 2
 
 typedef struct		s_choice
 {
