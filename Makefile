@@ -6,7 +6,7 @@
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 17:43:26 by pmiceli           #+#    #+#              #
-#    Updated: 2018/02/28 19:11:14 by pmiceli          ###   ########.fr        #
+#    Updated: 2018/03/02 01:57:02 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   draw/mandelbrot/key_mandel.c draw/mandelbrot/mouse_mandel.c\
 		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
 		   draw/julia/motion_julia.c draw/ship/draw_ship.c\
+		   draw/ship/mouse_ship.c\
 
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/

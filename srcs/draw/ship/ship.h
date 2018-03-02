@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:48 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/01 19:26:50 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 02:00:46 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 typedef struct		s_ship
 {
 	int				init;
+	int				init2;
 	double			x1;
 	double			x2;
 	double			y1;

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/28 19:18:24 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 01:57:47 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,19 @@ typedef struct			s_f
 */
 int					key_fonct(int keycode, t_f *f);
 int					loop_hook(t_f *f);
+
 int					motion_notify(int x, int y, t_f *f);
 int					motion_choice(int x, int y, t_f *f);
+int					motion_julia(int x, int y, t_f *f);
+
 int					mouse_fonct(int button, int x, int y, t_f *f);
 int					mouse_choice(int button, int x, int y, t_f *f);
-int					key_mandel(int keycode, t_f *f);
-int					key_julia(int keycode, t_f *f);
 int					mouse_mandel(int button, int x, int y, t_f *f);
 int					mouse_julia(int button, int x, int y, t_f *f);
-int					motion_julia(int x, int y, t_f *f);
+int					mouse_ship(int button, int x, int y, t_f *f);
+
+int					key_mandel(int keycode, t_f *f);
+int					key_julia(int keycode, t_f *f);
 
 /*
 ** draw foncts

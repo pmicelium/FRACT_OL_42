@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:57:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/01 22:31:00 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 00:31:23 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int				motion_julia(int x, int y, t_f *f)
 	{
 		f->event.motion.x = x;
 		f->event.motion.y = y;
-	//	f->flags.julia_repaint = NEW;
+		f->flags.julia_repaint = NEW;
 	}
 	return (0);
 }

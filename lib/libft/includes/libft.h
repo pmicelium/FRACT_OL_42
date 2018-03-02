@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 14:55:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/02/20 02:40:07 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/02 00:49:28 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 
 # define TESTS(X) ft_putstr_color("TEST ", "cyan"); ft_putnbr_endl(X);
 # define TEST ft_putendl_color("TEST ", "cyan");
