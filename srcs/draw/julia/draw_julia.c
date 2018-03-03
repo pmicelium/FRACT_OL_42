@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 02:03:23 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/03 17:16:49 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,8 @@ static void		zoom_julia(t_julia *j, t_f *f)
 
 static void		change_c(t_julia *j, t_f *f)
 {
-	j->c_r = ((f->event.motion.x * ((double)X_WIN / j->zoom_x)) / X_WIN) * 2;
-	j->c_i = ((f->event.motion.y * ((double)Y_WIN / j->zoom_y)) / Y_WIN) * 2;
-//a changer
+	j->c_r = (((f->event.motion.x * (j->x2 - j->x1)) / ((double)X_WIN))) - (j->x2 - j->x1) / 2.0;
+	j->c_i = (((f->event.motion.y * (j->y2 - j->y1)) / ((double)Y_WIN))) - (j->y2 - j->y1) / 2.0;
 }
 
 static void		julia_key(t_julia *j, t_f *f)
