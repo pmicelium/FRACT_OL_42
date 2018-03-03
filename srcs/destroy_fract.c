@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 04:52:09 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 18:10:05 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/03 20:07:27 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void			destroy_fract(t_f *f)
 	else if (f->fract == SHIP)
 	{
 		draw_ship(f, DESTROY);
+		set_var(f);
+	}
+	else if (f->fract == TREE)
+	{
+	//	draw_tree(f, DESTROY);
 		set_var(f);
 	}
 	mlx_clear_window(f->mlx.ptr, f->mlx.win);

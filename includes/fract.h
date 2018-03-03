@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 01:57:47 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/03 20:14:06 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define MANDEL 1
 # define JULIA 2
 # define SHIP 3
+# define TREE 4
 
 /*
 ** define draw
@@ -72,6 +73,7 @@ typedef struct			s_fr
 	int					mandel;
 	int					julia;
 	int					ship;
+	int					tree;
 }						t_fr;
 
 typedef struct			s_flags
@@ -82,6 +84,7 @@ typedef struct			s_flags
 	int					mandel_repaint;
 	int					julia_repaint;
 	int					ship_repaint;
+	int					tree_repaint;
 	struct s_fr			fr;
 }						t_flags;
 
@@ -126,6 +129,7 @@ int					key_julia(int keycode, t_f *f);
 void				draw_mandelbrot(t_f *f, int repaint);
 void				draw_julia(t_f *f, int repaint);
 void				draw_ship(t_f *f, int repaint);
+void				draw_tree(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
 void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
 

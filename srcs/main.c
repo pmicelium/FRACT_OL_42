@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 01:00:30 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/03 20:06:25 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 	{
 		f->flags.map = 1;
 		f->fract = SHIP;
+		return (1);
+	}
+	else if (ft_strcmp(argv[1], "Tree") == 0)
+	{
+		f->flags.map = 1;
+		f->fract = TREE;
 		return (1);
 	}
 	return (2);
