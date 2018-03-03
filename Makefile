@@ -19,8 +19,8 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   draw/choice/mouse_choice.c draw/mandelbrot/draw_mandelbrot.c\
 		   draw/mandelbrot/key_mandel.c draw/mandelbrot/mouse_mandel.c\
 		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
-		   draw/julia/motion_julia.c draw/ship/draw_ship.c\
-		   draw/ship/mouse_ship.c\
+		   draw/julia/motion_julia.c draw/julia/key_julia.c\
+		   draw/ship/draw_ship.c draw/ship/mouse_ship.c\
 
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/

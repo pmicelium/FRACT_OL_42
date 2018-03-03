@@ -27,7 +27,7 @@ static int			set_color(t_mandel m, int i)
 	return (color);
 }
 
-static t_mandel		mandel_init(t_mandel m)
+static t_mandel		mandel_init(t_mandel m, t_f *f)
 {
 	m.fx = 1;
 	m.fy = 1;
@@ -41,7 +41,7 @@ static t_mandel		mandel_init(t_mandel m)
 	m.y2 = 1.2 * m.fy;
 	m.zoom_x = X_WIN / (m.x2 - m.x1);
 	m.zoom_y = Y_WIN / (m.y2 - m.y1);
-	m.ite_max = 50.0;
+	m.ite_max = f->event.key.ite;;
 	m.k = 1;
 	m.init = 1;
 	return (m);
@@ -69,16 +69,24 @@ static void			zoom_mandel(t_mandel *m, t_f *f)
 	f->event.mouse.flag = 0;
 }
 
+static void			mandel_key(t_mandel *m, t_f *f)
+{
+	m->ite_max = f->event.key.ite;
+	f->event.key.flag = 0;
+	if (m->ite_max == 0)
+		m->ite_max = 1;
+}
+
 void				draw_mandelbrot(t_f *f, int repaint)
 {
 	static t_mandel		m;
 	int					x;
 	int					y;
-	int					i;
 	double				tmp;
+	unsigned long		i;
 
 	if (!m.init)
-		m = mandel_init(m);
+		m = mandel_init(m, f);
 	if (repaint == NEW)
 	{
 		m.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
@@ -87,6 +95,8 @@ void				draw_mandelbrot(t_f *f, int repaint)
 		x = 0;
 		if (f->event.mouse.flag == 1)
 			zoom_mandel(&m, f);
+		if (f->event.key.flag == 1)
+			mandel_key(&m, f);
 		while (x < X_WIN)
 		{
 			y = 0;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "fract.h" 
 
 static int		check_for_fract(int argc, char *argv[], t_f *f)
 {
@@ -58,6 +58,8 @@ void			set_var(t_f *f)
 	f->event.motion.x = 0;
 	f->event.motion.y = 0;
 	f->event.motion.flag = 0;
+	f->event.key.ite = 50;
+	f->event.key.flag = 0;
 	f->event.key.tr_h = 0;
 	f->event.key.tr_v = 0;
 	f->event.key.nb_ite = 7;

@@ -27,7 +27,7 @@ static int		set_color(t_julia j, int i)
 	return (color);
 }
 
-static t_julia	init_julia(t_julia j)
+static t_julia	init_julia(t_julia j, t_f *f)
 {
 	j.fx = 1;
 	j.fy = 1;
@@ -43,10 +43,10 @@ static t_julia	init_julia(t_julia j)
 	j.c_i = 0.01;
 	j.zoom_x = X_WIN / (j.x2 - j.x1);
 	j.zoom_y = Y_WIN / (j.y2 - j.y1);
-	j.ite_max = 50.0;
 	j.k = 1;
 	j.init = 1;
 	j.init2 = 0;
+	j.ite_max = f->event.key.ite;
 	return (j);
 }
 
@@ -80,17 +80,24 @@ static void		change_c(t_julia *j, t_f *f)
 //a changer
 }
 
+static void		julia_key(t_julia *j, t_f *f)
+{
+	if (f->event.key.ite > 0)
+		j->ite_max = f->event.key.ite;
+	f->event.key.flag = 0;
+}
+
 void			draw_julia(t_f *f, int repaint)
 {
 	static t_julia		j;
 	int					x;
 	int					y;
-	int					i;
+	unsigned long		i;
 	double				tmp;
 
 	if (!j.init)
 	{
-		j = init_julia(j);
+		j = init_julia(j, f);
 		f->event.mouse.zoom /= 0.25;
 	}
 	if (repaint == NEW)
@@ -103,6 +110,8 @@ void			draw_julia(t_f *f, int repaint)
 			change_c(&j, f);
 		if (f->event.mouse.flag == 1 || j.init2 == 0)
 			zoom_julia(&j, f);
+		if (f->event.key.flag == 1)
+			julia_key(&j, f);
 		while (x < X_WIN)
 		{
 			y = 0;

@@ -38,5 +38,17 @@ int				key_mandel(int keycode, t_f *f)
 		f->flags.mandel_repaint = NEW;
 		f->event.key.tr_h -= 1.0;
 	}
+	if (keycode == KEY_PLUS)
+	{
+		f->event.key.ite ++;
+		f->event.key.flag = 1;
+		f->flags.mandel_repaint = NEW;
+	}
+	if (keycode == KEY_MINUS)
+	{
+		f->event.key.ite --;
+		f->event.key.flag = 1;
+		f->flags.mandel_repaint = NEW;
+	}
 	return (0);
 }

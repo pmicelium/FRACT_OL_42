@@ -43,9 +43,11 @@ typedef struct			s_mouse
 
 typedef struct			s_key
 {
+	int					flag;
 	double				tr_h;
 	double				tr_v;
 	double				nb_ite; //a rajouter
+	unsigned long		ite;
 }						t_key;
 
 typedef struct			s_motion

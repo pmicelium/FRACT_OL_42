@@ -14,7 +14,17 @@
 
 int				key_julia(int keycode, t_f *f)
 {
-	if (keycode == 2)
-		f->do_nothing = 1;
+	if (keycode == KEY_PLUS)
+	{
+		f->event.key.ite ++;
+		f->event.key.flag = 1;
+		f->flags.julia_repaint = NEW;
+	}
+	if (keycode == KEY_MINUS)
+	{
+		f->event.key.ite --;
+		f->event.key.flag = 1;
+		f->flags.julia_repaint = NEW;
+	}
 	return (0);
 }

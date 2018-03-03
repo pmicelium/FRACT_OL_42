@@ -17,7 +17,8 @@ static void		key_fract(int keycode, t_f *f)
 	if (f->fract == MANDEL)
 		key_mandel(keycode, f);
 	else if (f->fract == JULIA)
-		key_mandel(keycode, f);
+		key_julia(keycode, f);
+
 }
 
 int				key_fonct(int keycode, t_f *f)

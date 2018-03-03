@@ -27,10 +27,10 @@ typedef struct		s_mandel
 	double			z_i;
 	double			zoom_x;
 	double			zoom_y;
-	double			ite_max;
 	double			k;
 	double			fx;
 	double			fy;
+	unsigned long	ite_max;
 	struct s_img	img;
 }					t_mandel;
 
