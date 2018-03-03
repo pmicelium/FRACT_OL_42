@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 01:54:45 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/03 18:29:21 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void				draw_mandelbrot(t_f *f, int repaint)
 						|| i == 0)
 				{
 					tmp = m.z_r;
+			//		m.z_r = pow(m.z_r * m.z_r - m.z_i * m.z_i + m.c_r, 2);
 					m.z_r = m.z_r * m.z_r - m.z_i * m.z_i + m.c_r;
 					m.z_i = 2 * m.z_i * tmp + m.c_i;
 					i++;
