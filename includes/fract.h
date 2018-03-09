@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 20:14:06 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/09 20:48:53 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 /*
 ** int value for each fractal
 */
+# define VOID 0
 # define MANDEL 1
 # define JULIA 2
 # define SHIP 3
@@ -70,6 +71,7 @@ typedef struct			s_event
 */
 typedef struct			s_fr
 {
+	int					_void;
 	int					mandel;
 	int					julia;
 	int					ship;

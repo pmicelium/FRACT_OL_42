@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:35 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/01/24 04:46:23 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/09 22:10:16 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ static void		put_choice(t_f *f)
 		mlx_string_put(f->mlx.ptr, f->mlx.win, SHIP_X - 20, SHIP_Y,
 				GREY, ">      <");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, SHIP_X, SHIP_Y, GREY, "Ship");
+	if (f->flags.fr.tree == 1)
+		mlx_string_put(f->mlx.ptr, f->mlx.win, TREE_X - 20, TREE_Y, 
+				GREY, ">      <");
+	mlx_string_put(f->mlx.ptr, f->mlx.win, TREE_X, TREE_Y, GREY, "Tree");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, 25, 25, GREY, "exit : ESC");
 }
 
@@ -52,6 +56,30 @@ static void		destroy_choice(t_choice *choice, t_f *f)
 	mlx_clear_window(f->mlx.ptr, f->mlx.win);
 	mlx_destroy_image(f->mlx.ptr, choice->img.ptr);
 	mlx_destroy_image(f->mlx.ptr, choice->img_xpm.ptr);
+}
+
+static void		draw_middle(t_f *f)
+{
+	static t_bresenham	b;
+	static t_img		img;
+	static int			init = 0;
+
+	if (init == 0)
+	{
+		img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
+		img.data = (int *)mlx_get_data_addr(img.ptr, &img.bpp, &img.lsize, 
+				&img.endian);
+		b.x0 = 125;
+		b.y0 = Y_WIN / 4 + 350;
+		b.x1 = X_WIN - 120;
+		b.y1 = Y_WIN / 4 + 350;
+		b.color = GREY;
+		b.x_win = X_WIN;
+		b.y_win = Y_WIN;
+		bresenham_line_mlx(b, img);
+		init = 1;
+	}
+	mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, img.ptr, 0, 0);
 }
 
 void			display_choice(t_f *f, int repaint)
@@ -69,12 +97,15 @@ void			display_choice(t_f *f, int repaint)
 	}
 	if (repaint == REPAINT || repaint == NEW)
 	{
+		draw_middle(f);
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img_xpm.ptr, 0,
 				0);
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.ptr,
-				X_WIN / 3, Y_WIN / 3);
+				X_WIN / 4, Y_WIN / 4);
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.ptr,
-			2 * X_WIN / 3, Y_WIN / 3);
+			2 * X_WIN / 4, Y_WIN / 4);
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.ptr,
+			3 * X_WIN / 4, Y_WIN / 4);
 		put_choice(f);
 	}
 	if (repaint == DESTROY)

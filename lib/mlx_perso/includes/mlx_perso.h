@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 19:42:42 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/09 21:17:15 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ t_mlx				init_win(t_mlx mlx, char *win_name);
 
 /*
 ** make a line between b.x0, b.x1 and b.y0, b.y1
-** need to initialise x0, x1, y0, y1, x_win, y_win the struct s_bresenham
+** need to initialise x0, x1, y0, y1, x_win, y_win and color in  the struct 
+** s_bresenham
+** img need to have a img.ptr and img.data initialisated with the mlx
 */
 void				bresenham_line_mlx(t_bresenham b, t_img img);
 

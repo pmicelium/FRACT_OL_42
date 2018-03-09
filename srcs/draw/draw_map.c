@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 00:29:19 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 20:08:50 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/09 20:30:55 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void			draw_map(t_f *f, int fract)
 		else
 			draw_ship(f, REPAINT);
 	}
-	else if (fract == TREE)
-	{
-		if (f->flags.tree_repaint == 0)
+//	else if (fract == TREE)
+//	{
+//		if (f->flags.tree_repaint == 0)
 //			draw_tree(f, NEW);
-		else
-			draw_tree(f, REPAINT);
-	}
+//		else
+//			draw_tree(f, REPAINT);
+//	}
 }
