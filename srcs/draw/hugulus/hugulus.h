@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:34:37 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 01:36:05 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 06:36:51 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct		s_hugulus
 	double			fy;
 	unsigned long	ite_max;
 	struct s_img	img;
-
 }					t_hugulus;
 
+void				hugulus_key(t_hugulus *h, t_f *f);
 #endif
