@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:04 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 06:23:21 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:23:53 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct		s_julia
 {
 	int				init;
 	int				init2;
+	int				x;
 	double			x1;
 	double			x2;
 	double			y1;

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 05:51:50 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:24:57 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void			zoom_mandel(t_mandel *m, t_f *f)
 static void			mandel_calcul(t_mandel *m, int x)
 {
 	double				tmp;
-	unsigned long		i;
+	long				i;
 	int					y;
 
 	y = -1;
@@ -86,7 +86,6 @@ static void			mandel_calcul(t_mandel *m, int x)
 				|| i == 0)
 		{
 			tmp = m->z_r;
-			//		m.z_r = pow(m.z_r * m.z_r - m.z_i * m.z_i + m.c_r, 2);
 			m->z_r = m->z_r * m->z_r - m->z_i * m->z_i + m->c_r;
 			m->z_i = 2 * m->z_i * tmp + m->c_i;
 			i++;

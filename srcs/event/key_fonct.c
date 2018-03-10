@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 23:51:54 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:43:38 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:25:15 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void		key_fract(int keycode, t_f *f)
 		key_ship(keycode, f);
 	else if (f->fract == HUGULUS)
 		key_hugulus(keycode, f);
-
 }
 
 int				key_fonct(int keycode, t_f *f)

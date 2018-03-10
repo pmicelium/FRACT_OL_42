@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 05:19:29 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:19:21 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # include "../lib/libft/includes/libft.h" //retirer les .. PARTOUT !!!//
 # include "../lib/minilibx_macos/mlx.h"
 # include "../lib/mlx_perso/includes/mlx_perso.h"
-//# include "mlx_win.h"
 
 /*
 ** int value for each fractal
@@ -25,14 +24,6 @@
 # define SHIP 3
 # define TREE 4
 # define HUGULUS 5
-
-
-/*
-** define thread
-*/
-# define X_CHUNK 250
-# define Y_CHUNK 250
-# define NB_THREAD 16
 
 /*
 ** define draw
@@ -58,7 +49,7 @@ typedef struct			s_key
 	double				tr_h;
 	double				tr_v;
 	double				nb_ite; //a rajouter
-	unsigned long		ite;
+	long		ite;
 }						t_key;
 
 typedef struct			s_motion
@@ -70,9 +61,9 @@ typedef struct			s_motion
 
 typedef struct			s_event
 {
-	t_mouse		mouse;
-	t_key		key;
-	t_motion		motion;
+	t_mouse				mouse;
+	t_key				key;
+	t_motion			motion;
 }						t_event;
 
 /*
@@ -107,9 +98,9 @@ typedef struct			s_flags
 typedef struct			s_f
 {
 	int					fract;
-	t_mlx		mlx;
-	t_flags		flags;
-	t_event		event;
+	t_mlx				mlx;
+	t_flags				flags;
+	t_event				event;
 	int					do_nothing;
 }						t_f;
 
@@ -149,11 +140,6 @@ void				draw_tree(t_f *f, int repaint);
 void				draw_hugulus(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
 void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
-
-/*
-** thread foncts
-*/
-void				thread_init(t_f *f);
 
 /*
 ** exit fonct

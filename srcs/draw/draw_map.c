@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 00:29:19 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 06:42:42 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:21:40 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void			draw_map_2(t_f *f, int fract)
 	}
 */
 }
-// sur julia et ship => voir pour le repaint a chaque ite//
-//
+
 void			draw_map(t_f *f, int fract)
 {
 	if (fract == MANDEL)
@@ -66,4 +65,3 @@ void			draw_map(t_f *f, int fract)
 	else
 		draw_map_2(f, fract);
 }
-

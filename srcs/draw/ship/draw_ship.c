@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 05:59:26 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:09:10 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void				draw_ship(t_f *f, int repaint)
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, s.img.ptr, 0, 0);
-	f->flags.mandel_repaint = 1;
+	f->flags.ship_repaint = 1;
 	if (repaint == DESTROY)
 	{
 		s.init = 0;

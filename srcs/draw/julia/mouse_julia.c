@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:59:09 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 06:23:10 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:17:16 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ void			zoom_julia(t_julia *j, t_f *f)
 		j->ite_max += f->event.key.nb_ite;
 	zoom = f->event.mouse.zoom;
 	j->init2 = 1;
+	f->event.mouse.flag = 0;
 }

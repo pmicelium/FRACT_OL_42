@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 06:26:58 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 23:24:17 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,25 @@ static void		julia_calcul(t_julia *j, int x)
 void			draw_julia(t_f *f, int repaint)
 {
 	static t_julia		j;
-	int					x;
 
 	if (!j.init)
 		init_julia(&j, f);
 	if (repaint == NEW)
 	{
 		init_img(&j.img, &f->mlx);
-		x = -1;
+		j.x = -1;
 		if (f->event.motion.flag == 1)
 			change_c(&j, f);
 		if (f->event.mouse.flag == 1 || j.init2 == 0)
 			zoom_julia(&j, f);
 		if (f->event.key.flag == 1)
 			julia_key(&j, f);
-		while (++x < X_WIN)
-			julia_calcul(&j, x);
+		while (++j.x < X_WIN)
+			julia_calcul(&j, j.x);
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, j.img.ptr, 0, 0);
+	f->flags.julia_repaint = 1;
 	if (repaint == DESTROY)
 	{
 		j.init = 0;
