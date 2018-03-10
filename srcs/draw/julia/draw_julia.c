@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 17:16:49 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 01:49:08 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_julia	init_julia(t_julia j, t_f *f)
 {
 	j.fx = 1;
 	j.fy = 1;
-	if (((double)X_WIN) / ((double)Y_WIN) < 200 / 2.4)
+	if (((double)X_WIN) / ((double)Y_WIN) < 200 / 240)
 		j.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 200);
 	else
 		j.fx = ((double)X_WIN / 200) / ((double)Y_WIN / 240);
@@ -40,6 +40,7 @@ static t_julia	init_julia(t_julia j, t_f *f)
 	j.y1 = -1.2 * j.fy;
 	j.y2 = 1.2 * j.fy;
 	j.c_r = 0.285;
+//	j.c_r = -0.8;
 	j.c_i = 0.01;
 	j.zoom_x = X_WIN / (j.x2 - j.x1);
 	j.zoom_y = Y_WIN / (j.y2 - j.y1);

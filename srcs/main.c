@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 20:06:25 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 00:12:00 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int				main(int argc, char *argv[])
 	mlx_hook(f.mlx.win, 4, (1l << 8), &mouse_fonct, &f);
 	mlx_hook(f.mlx.win, 6, (1L << 13), &motion_notify, &f);
 	mlx_loop_hook(f.mlx.ptr, loop_hook, &f);
+//	thread_init(&f);
 	mlx_loop(f.mlx.ptr);
 	return (0);
 }

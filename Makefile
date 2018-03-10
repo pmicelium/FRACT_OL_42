@@ -6,7 +6,7 @@
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 17:43:26 by pmiceli           #+#    #+#              #
-#    Updated: 2018/03/02 01:57:02 by pmiceli          ###   ########.fr        #
+#    Updated: 2018/03/10 02:01:03 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,14 @@ SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
 		   draw/julia/motion_julia.c draw/julia/key_julia.c\
 		   draw/ship/draw_ship.c draw/ship/mouse_ship.c\
+		   draw/hugulus/draw_hugulus.c draw/hugulus/mouse_hugulus.c\
 
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
 INC = ./includes/
 INCS = ./includes/fract.h ./srcs/draw/mandelbrot/mandelbrot.h\
 	   ./srcs/draw/choice/choice.h ./srcs/event/event.h ./srcs/fps/fps.h\
 	   ./srcs/draw/julia/julia.h ./srcs/draw/ship/ship.h\
+	   ./srcs/draw/hugulus/hugulus.h\
 
 OBJS_DIR = ./objs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCNAMES:.c=.o))

@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   hugulus.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 00:51:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 01:08:47 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/03/10 01:34:37 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/03/10 01:36:05 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#ifndef HUGULUS_H
+# define HUGULUS_H
+# include "../../../includes/fract.h"
 
-int						loop_hook(t_f *f)
+typedef struct		s_hugulus
 {
-	mlx_clear_window(f->mlx.ptr, f->mlx.win);
-	if (f->flags.map == 0)
-		draw_map(f, VOID);
-	else
-		draw_map(f, f->fract);
-	fps(f);
-	return (0);
-}
+	int				init;
+	int				init2;
+	double			x1;
+	double			x2;
+	double			y1;
+	double			y2;
+	double			c_r;
+	double			c_i;
+	double			z_r;
+	double			z_i;
+	double			zoom_x;
+	double			zoom_y;
+	double			k;
+	double			fx;
+	double			fy;
+	unsigned long	ite_max;
+	struct s_img	img;
+
+}					t_hugulus;
+
+#endif

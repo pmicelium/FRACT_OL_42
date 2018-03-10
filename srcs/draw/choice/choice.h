@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/09 20:56:50 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 02:04:27 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define SHIP_Y (Y_WIN / 3 + 50)
 # define TREE_X ( 7 * X_WIN / 8)
 # define TREE_Y (Y_WIN / 3 + 50)
+# define HUGU_X (X_WIN / 8 - 25)
+# define HUGU_Y (2 * Y_WIN / 3 + 50)
 
 typedef struct		s_choice
 {
