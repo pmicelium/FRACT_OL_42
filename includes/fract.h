@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 03:31:28 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 04:37:54 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,29 @@
 # define DESTROY 2
 
 /*
+** Julia's struct
+*/
+typedef struct		s_julia
+{
+	int					init;
+	int					init2;
+	double				x1;
+	double				x2;
+	double				y1;
+	double				y2;
+	double				c_r;
+	double				c_i;
+	double				z_r;
+	double				z_i;
+	double				zoom_x;
+	double				zoom_y;
+	double				k;
+	double				fx;
+	double				fy;
+	unsigned long		ite_max;
+	struct s_img		img;
+}						t_julia;
+/*
 ** Event's structs
 */
 typedef struct			s_mouse
@@ -70,9 +93,9 @@ typedef struct			s_motion
 
 typedef struct			s_event
 {
-	t_mouse		mouse;
-	t_key		key;
-	t_motion		motion;
+	t_mouse				mouse;
+	t_key				key;
+	t_motion			motion;
 }						t_event;
 
 /*
@@ -98,8 +121,14 @@ typedef struct			s_flags
 	int					ship_repaint;
 	int					tree_repaint;
 	int					hugulus_repaint;
-	t_fr			fr;
+	t_fr				fr;
 }						t_flags;
+
+typedef struct			s_thread
+{
+	int					nb_block_x;
+	int					nb_block_y;
+}						t_thread;
 
 /*
 ** main struct
@@ -107,9 +136,12 @@ typedef struct			s_flags
 typedef struct			s_f
 {
 	int					fract;
-	t_mlx		mlx;
-	t_flags		flags;
-	t_event		event;
+	t_mlx				mlx;
+	t_flags				flags;
+	t_event				event;
+	t_img				img;
+	t_julia				j;
+	t_thread			t;
 	int					do_nothing;
 }						t_f;
 
@@ -143,12 +175,12 @@ int					key_ship(int keycode, t_f *f);
 ** draw foncts
 */
 void				draw_mandelbrot(t_f *f, int repaint);
-void				draw_julia(t_f *f, int repaint);
+void				draw_julia(t_f *f, int tx, int ty);
 void				draw_ship(t_f *f, int repaint);
 void				draw_tree(t_f *f, int repaint);
 void				draw_hugulus(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
-void				draw_map(t_f *f, int fract, int x, int y); //mauvaise place ou nom je pense//
+void				draw_map(t_f *f, int x, int y); //mauvaise place ou nom je pense//
 
 /*
 ** thread foncts

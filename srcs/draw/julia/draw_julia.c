@@ -6,11 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 03:34:51 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 04:35:57 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "julia.h"
+#include "../../../includes/fract.h"
 
 static int		set_color(t_julia j, int i)
 {
@@ -40,7 +40,6 @@ static t_julia	init_julia(t_julia j, t_f *f)
 	j.y1 = -1.2 * j.fy;
 	j.y2 = 1.2 * j.fy;
 	j.c_r = 0.285;
-//	j.c_r = -0.8;
 	j.c_i = 0.01;
 	j.zoom_x = X_WIN / (j.x2 - j.x1);
 	j.zoom_y = Y_WIN / (j.y2 - j.y1);
@@ -85,59 +84,34 @@ static void		julia_key(t_julia *j, t_f *f)
 		j->ite_max = f->event.key.ite;
 }
 
-void			draw_julia(t_f *f, int repaint)
+void			draw_julia(t_f *f, int tx, int ty)
 {
-	static t_julia		j;
 	int					x;
 	int					y;
 	unsigned long		i;
 	double				tmp;
 
-	if (!j.init)
+	x = 0;
+	while (x < X_WIN)
 	{
-		j = init_julia(j, f);
-		f->event.mouse.zoom /= 0.25;
-	}
-	if (repaint == NEW)
-	{
-		j.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
-		j.img.data = (int*)mlx_get_data_addr(j.img.ptr, &j.img.bpp,
-				&j.img.lsize, &j.img.endian);
-		x = 0;
-		if (f->event.motion.flag == 1)
-			change_c(&j, f);
-		if (f->event.mouse.flag == 1 || j.init2 == 0)
-			zoom_julia(&j, f);
-		if (f->event.key.flag == 1)
-			julia_key(&j, f);
-		while (x < X_WIN)
+		y = 0;
+		while (y < Y_WIN)
 		{
-			y = 0;
-			while (y < Y_WIN)
+			f->j.z_r = x / f->j.zoom_x + f->j.x1;
+			f->j.z_i = y / f->j.zoom_y + f->j.y1;
+			i = 0;
+			while ((f->j.z_r * f->j.z_r + f->j.z_i * f->j.z_i <= 4 && i < f->j.ite_max)
+					|| i == 0)
 			{
-				j.z_r = x / j.zoom_x + j.x1;
-				j.z_i = y / j.zoom_y + j.y1;
-				i = 0;
-				while ((j.z_r * j.z_r + j.z_i * j.z_i <= 4 && i < j.ite_max)
-				|| i == 0)
-				{
-					tmp = j.z_r;
-					j.z_r = (j.z_r * j.z_r) - (j.z_i * j.z_i) + j.c_r;
-					j.z_i = 2 * j.z_i * tmp + j.c_i;
-					i++;
-				}
-				if (i != j.ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-					j.img.data[y * X_WIN + x] = set_color(j, i);
-				y++;
+				tmp = f->j.z_r;
+				f->j.z_r = (f->j.z_r * f->j.z_r) - (f->j.z_i * f->j.z_i) + f->j.c_r;
+				f->j.z_i = 2 * f->j.z_i * tmp + f->j.c_i;
+				i++;
 			}
-			x++;
+			if (i != f->j.ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
+				f->img.data[y * X_WIN + x] = set_color(f->j, i);
+			y++;
 		}
-	}
-	if (repaint == REPAINT || repaint == NEW)
-		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, j.img.ptr, 0, 0);
-	if (repaint == DESTROY)
-	{
-		j.init = 0;
-		mlx_destroy_image(f->mlx.ptr, j.img.ptr);
+		x++;
 	}
 }
