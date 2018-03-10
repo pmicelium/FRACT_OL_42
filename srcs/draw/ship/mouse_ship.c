@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 01:58:06 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 06:00:17 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@ int				mouse_ship(int button, int x, int y, t_f *f)
 		f->event.mouse.flag = 1;
 	}
 	return (0);
-
 }

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:47:02 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 05:59:26 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,39 @@ static void			zoom_ship(t_ship *s, t_f *f)
 	s->init2 = 0;
 }
 
+void				ship_calcul(t_ship *s, int x)
+{
+	int					y;
+	int					i;
+	double				tmp;
+
+	y = 0;
+	while (y < Y_WIN)
+	{
+		s->c_r = x / s->zoom_x + s->x1;
+		s->c_i = y / s->zoom_y + s->y1;
+		s->z_r = 0;
+		s->z_i = 0;
+		i = 0;
+		while ((s->z_r * s->z_r + s->z_i * s->z_i < 4 && i < s->ite_max)
+				|| i == 0)
+		{
+			tmp = s->z_r;
+			s->z_r = s->z_r * s->z_r - s->z_i * s->z_i + s->c_r;
+			s->z_i = 2 * fabs(s->z_i * tmp) + s->c_i;
+			i++;
+		}
+		if (i != s->ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
+			s->img.data[y * X_WIN + x] = set_color(*s, i);
+		y++;
+	}
+	x++;
+}
+
 void				draw_ship(t_f *f, int repaint)
 {
 	static t_ship		s;
 	int					x;
-	int					y;
-	int					i;
-	double				tmp;
 
 	if (!s.init)
 	{
@@ -86,36 +112,12 @@ void				draw_ship(t_f *f, int repaint)
 	}
 	if (repaint == NEW)
 	{
-		s.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
-		s.img.data = (int*)mlx_get_data_addr(s.img.ptr, &s.img.bpp,
-				&s.img.lsize, &s.img.endian);
-		x = 0;
+		init_img(&s.img, &f->mlx);
+		x = -1;
 		if (f->event.mouse.flag == 1 || s.init2 == 1)
 			zoom_ship(&s, f);
-		while (x < X_WIN)
-		{
-			y = 0;
-			while (y < Y_WIN)
-			{
-				s.c_r = x / s.zoom_x + s.x1;
-				s.c_i = y / s.zoom_y + s.y1;
-				s.z_r = 0;
-				s.z_i = 0;
-				i = 0;
-				while ((s.z_r * s.z_r + s.z_i * s.z_i < 4 && i < s.ite_max)
-						|| i == 0)
-				{
-					tmp = s.z_r;
-					s.z_r = s.z_r * s.z_r - s.z_i * s.z_i + s.c_r;
-					s.z_i = 2 * fabs(s.z_i * tmp) + s.c_i;
-					i++;
-				}
-				if (i != s.ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-					s.img.data[y * X_WIN + x] = set_color(s, i);
-				y++;
-			}
-			x++;
-		}
+		while (++x < X_WIN)
+			ship_calcul(&s, x);
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, s.img.ptr, 0, 0);
