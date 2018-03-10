@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 00:51:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 05:15:41 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/03/10 05:40:23 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/03/10 05:43:05 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract.h"
+#include "mlx_perso.h"
 
-int						loop_hook(t_f *f)
+void				init_img(t_img *img, t_mlx *mlx)
 {
-	mlx_clear_window(f->mlx.ptr, f->mlx.win);
-	draw_map(f, f->fract);
-	fps(f);
-	return (0);
+	img->ptr = mlx_new_image(mlx->ptr, X_WIN, Y_WIN);
+	img->data = (int*)mlx_get_data_addr(img->ptr, &img->bpp,
+			&img->lsize, &img->endian);
 }

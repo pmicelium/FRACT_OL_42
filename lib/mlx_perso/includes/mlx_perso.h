@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/09 21:17:15 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 05:44:49 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ typedef struct		s_bresenham
 int					check_draw(int x, int y, int x_img, int y_img);
 
 /*
-** make a mlx_init and create a window (X_WIN, Y_WIN)
+** initialise an mlx img and it's mlx.data
 */
-t_mlx				init_win(t_mlx mlx, char *win_name);
+void				init_img(t_img *img, t_mlx *mlx);
+
 
 /*
 ** make a line between b.x0, b.x1 and b.y0, b.y1

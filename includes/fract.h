@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 03:31:28 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 05:19:29 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct			s_fr
 typedef struct			s_flags
 {
 	int					leaks;
-	int					map;
+//	int					map;
 	int					display_repaint;
 	int					mandel_repaint;
 	int					julia_repaint;
@@ -148,7 +148,7 @@ void				draw_ship(t_f *f, int repaint);
 void				draw_tree(t_f *f, int repaint);
 void				draw_hugulus(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
-void				draw_map(t_f *f, int fract, int x, int y); //mauvaise place ou nom je pense//
+void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
 
 /*
 ** thread foncts

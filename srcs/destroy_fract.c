@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 04:52:09 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:12:18 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 05:20:40 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			destroy_fract(t_f *f)
 {
-	if (f->flags.map == 0)
+	if (f->fract == VOID)
 		display_choice(f, DESTROY);
 	else if (f->fract == MANDEL)
 	{

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/03 18:29:21 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 05:51:50 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,23 @@ static int			set_color(t_mandel m, int i)
 	return (color);
 }
 
-static t_mandel		mandel_init(t_mandel m, t_f *f)
+static void			mandel_init(t_mandel *m, t_f *f)
 {
-	m.fx = 1;
-	m.fy = 1;
+	m->fx = 1;
+	m->fy = 1;
 	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		m.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+		m->fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
 	else
-		m.fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
-	m.x1 = (-2.1 + 0.75) * m.fx - 0.75;
-	m.x2 = (0.6 + 0.75) * m.fx - 0.75;
-	m.y1 = -1.2 * m.fy;
-	m.y2 = 1.2 * m.fy;
-	m.zoom_x = X_WIN / (m.x2 - m.x1);
-	m.zoom_y = Y_WIN / (m.y2 - m.y1);
-	m.ite_max = f->event.key.ite;;
-	m.k = 1;
-	m.init = 1;
-	return (m);
+		m->fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
+	m->x1 = (-2.1 + 0.75) * m->fx - 0.75;
+	m->x2 = (0.6 + 0.75) * m->fx - 0.75;
+	m->y1 = -1.2 * m->fy;
+	m->y2 = 1.2 * m->fy;
+	m->zoom_x = X_WIN / (m->x2 - m->x1);
+	m->zoom_y = Y_WIN / (m->y2 - m->y1);
+	m->ite_max = f->event.key.ite;
+	m->k = 1;
+	m->init = 1;
 }
 
 static void			zoom_mandel(t_mandel *m, t_f *f)
@@ -69,59 +68,51 @@ static void			zoom_mandel(t_mandel *m, t_f *f)
 	f->event.mouse.flag = 0;
 }
 
-static void			mandel_key(t_mandel *m, t_f *f)
+static void			mandel_calcul(t_mandel *m, int x)
 {
-	m->ite_max = f->event.key.ite;
-	f->event.key.flag = 0;
-	if (m->ite_max == 0)
-		m->ite_max = 1;
+	double				tmp;
+	unsigned long		i;
+	int					y;
+
+	y = -1;
+	while (++y < Y_WIN)
+	{
+		m->c_r = x / m->zoom_x + m->x1;
+		m->c_i = y / m->zoom_y + m->y1;
+		m->z_r = 0;
+		m->z_i = 0;
+		i = 0;
+		while ((m->z_r * m->z_r + m->z_i * m->z_i < 4 && i < m->ite_max)
+				|| i == 0)
+		{
+			tmp = m->z_r;
+			//		m.z_r = pow(m.z_r * m.z_r - m.z_i * m.z_i + m.c_r, 2);
+			m->z_r = m->z_r * m->z_r - m->z_i * m->z_i + m->c_r;
+			m->z_i = 2 * m->z_i * tmp + m->c_i;
+			i++;
+		}
+		if (i != m->ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
+			m->img.data[y * X_WIN + x] = set_color(*m, i);
+	}
 }
 
 void				draw_mandelbrot(t_f *f, int repaint)
 {
 	static t_mandel		m;
 	int					x;
-	int					y;
-	double				tmp;
-	unsigned long		i;
 
 	if (!m.init)
-		m = mandel_init(m, f);
+		mandel_init(&m, f);
 	if (repaint == NEW)
 	{
-		m.img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
-		m.img.data = (int*)mlx_get_data_addr(m.img.ptr, &m.img.bpp,
-				&m.img.lsize, &m.img.endian);
-		x = 0;
+		init_img(&m.img, &f->mlx);
+		x = -1;
 		if (f->event.mouse.flag == 1)
 			zoom_mandel(&m, f);
 		if (f->event.key.flag == 1)
 			mandel_key(&m, f);
-		while (x < X_WIN)
-		{
-			y = 0;
-			while (y < Y_WIN)
-			{
-				m.c_r = x / m.zoom_x + m.x1;
-				m.c_i = y / m.zoom_y + m.y1;
-				m.z_r = 0;
-				m.z_i = 0;
-				i = 0;
-				while ((m.z_r * m.z_r + m.z_i * m.z_i < 4 && i < m.ite_max)
-						|| i == 0)
-				{
-					tmp = m.z_r;
-			//		m.z_r = pow(m.z_r * m.z_r - m.z_i * m.z_i + m.c_r, 2);
-					m.z_r = m.z_r * m.z_r - m.z_i * m.z_i + m.c_r;
-					m.z_i = 2 * m.z_i * tmp + m.c_i;
-					i++;
-				}
-				if (i != m.ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-					m.img.data[y * X_WIN + x] = set_color(m, i);
-				y++;
-			}
-			x++;
-		}
+		while (++x < X_WIN)
+			mandel_calcul(&m, x);
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, m.img.ptr, 0, 0);

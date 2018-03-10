@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 00:12:00 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 05:20:05 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,23 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 		return (0);
 	if (argc > 2)
 		return (2);
-	f->flags.map = 0;
 	if (ft_strcmp(argv[1], "Mandelbrot") == 0)
 	{
-		f->flags.map = 1;
 		f->fract = MANDEL;
 		return (1);
 	}
 	else if (ft_strcmp(argv[1], "Julia") == 0)
 	{
-		f->flags.map = 1;
 		f->fract = JULIA;
 		return (1);
 	}
 	else if (ft_strcmp(argv[1], "Ship") == 0)
 	{
-		f->flags.map = 1;
 		f->fract = SHIP;
 		return (1);
 	}
 	else if (ft_strcmp(argv[1], "Tree") == 0)
 	{
-		f->flags.map = 1;
 		f->fract = TREE;
 		return (1);
 	}
@@ -49,11 +44,14 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 void			set_var(t_f *f)
 {
 	f->fract = 0;
-	f->flags.map = 0;
+//	f->flags.map = 0;
 	f->flags.leaks = 0;
 	f->flags.display_repaint = 0;
 	f->flags.mandel_repaint = 0;
 	f->flags.julia_repaint = 0;
+	f->flags.ship_repaint = 0;
+	f->flags.tree_repaint = 0;
+	f->flags.hugulus_repaint = 0;
 	f->flags.fr.mandel = 0;
 	f->flags.fr.julia = 0;
 	f->flags.fr.ship = 0;
