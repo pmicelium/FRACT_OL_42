@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:36:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:14:27 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 02:26:46 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int		set_color(t_hugulus h, int i)
 	int		b;
 
 	color = 0;
-	r = 0;
+	r = i * 255 / h.ite_max;
 	g = i * 255 / h.ite_max;
-	b = 0;
+	b = i * 255 / h.ite_max;
 	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
 	return (color);
 }

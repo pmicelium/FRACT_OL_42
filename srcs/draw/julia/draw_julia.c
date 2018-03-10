@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 01:49:08 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 03:34:51 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void		zoom_julia(t_julia *j, t_f *f)
 	else
 		j->ite_max += f->event.key.nb_ite;
 	zoom = f->event.mouse.zoom;
-	f->event.mouse.flag = 0;
 	j->init2 = 1;
 }
 
@@ -84,7 +83,6 @@ static void		julia_key(t_julia *j, t_f *f)
 {
 	if (f->event.key.ite > 0)
 		j->ite_max = f->event.key.ite;
-	f->event.key.flag = 0;
 }
 
 void			draw_julia(t_f *f, int repaint)
@@ -137,7 +135,6 @@ void			draw_julia(t_f *f, int repaint)
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, j.img.ptr, 0, 0);
-	f->flags.julia_repaint = 1;
 	if (repaint == DESTROY)
 	{
 		j.init = 0;

@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:01:38 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 03:31:28 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ int					mouse_hugulus(int button, int x, int y, t_f *f);
 
 int					key_mandel(int keycode, t_f *f);
 int					key_julia(int keycode, t_f *f);
+int					key_hugulus(int keycode, t_f *f);
+int					key_ship(int keycode, t_f *f);
 
 /*
 ** draw foncts
@@ -146,7 +148,7 @@ void				draw_ship(t_f *f, int repaint);
 void				draw_tree(t_f *f, int repaint);
 void				draw_hugulus(t_f *f, int repaint);
 void				display_choice(t_f *f, int repaint);
-void				draw_map(t_f *f, int fract); //mauvaise place ou nom je pense//
+void				draw_map(t_f *f, int fract, int x, int y); //mauvaise place ou nom je pense//
 
 /*
 ** thread foncts

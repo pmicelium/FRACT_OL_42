@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   motion_notify.c                                    :+:      :+:    :+:   */
+/*   key_hugulus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 03:53:48 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:38:09 by pmiceli          ###   ########.fr       */
+/*   Created: 2018/03/10 02:40:48 by pmiceli           #+#    #+#             */
+/*   Updated: 2018/03/10 02:41:53 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "event.h"
+#include "hugulus.h"
 
-int				motion_notify(int x, int y, t_f *f)
+int				key_hugulus(int keycode, t_f *f)
 {
-	if (f->fract == VOID)
-		motion_choice(x, y, f);
-	else if (f->fract == JULIA)
-		motion_julia(x, y, f);
+	if (keycode == KEY_PLUS)
+	{
+		f->event.key.ite ++;
+		f->event.key.flag = 1;
+		f->flags.hugulus_repaint = NEW;
+	}
+	if (keycode == KEY_MINUS)
+	{
+		f->event.key.ite --;
+		f->event.key.flag = 1;
+		f->flags.hugulus_repaint = NEW;
+	}
 	return (0);
 }

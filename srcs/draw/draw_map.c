@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 00:29:19 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:13:27 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 03:31:01 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-void			draw_map(t_f *f, int fract)
+void			draw_map(t_f *f, int fract, int x, int y)
 {
 	if (fract == MANDEL)
 	{
