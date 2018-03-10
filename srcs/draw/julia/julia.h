@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:04 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 00:34:56 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 06:23:21 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,7 @@ typedef struct		s_julia
 	struct s_img	img;
 }					t_julia;
 
+void				julia_key(t_julia *j, t_f *f);
+void				change_c(t_julia *j, t_f *f);
+void				zoom_julia(t_julia *j, t_f *f);
 #endif

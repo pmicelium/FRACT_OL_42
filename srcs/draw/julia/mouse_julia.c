@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:59:09 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/01 19:58:35 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 06:23:10 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,26 @@ int				mouse_julia(int button, int x, int y, t_f *f)
 		f->event.mouse.flag = 1;
 	}
 	return (0);
+}
+
+void			zoom_julia(t_julia *j, t_f *f)
+{
+	double				x_zoom;
+	double				y_zoom;
+	static double		zoom = 1;
+
+	x_zoom = f->event.mouse.x / j->zoom_x + j->x1;
+	y_zoom = f->event.mouse.y / j->zoom_y + j->y1;
+	j->x1 = x_zoom - f->event.mouse.zoom * j->fx;
+	j->x2 = x_zoom + f->event.mouse.zoom * j->fx;
+	j->y1 = y_zoom - f->event.mouse.zoom * j->fy;
+	j->y2 = y_zoom + f->event.mouse.zoom * j->fy;
+	j->zoom_x = X_WIN / (j->x2 - j->x1);
+	j->zoom_y = Y_WIN / (j->y2 - j->y1);
+	if (f->event.mouse.zoom >= zoom)
+		j->ite_max -= f->event.key.nb_ite;
+	else
+		j->ite_max += f->event.key.nb_ite;
+	zoom = f->event.mouse.zoom;
+	j->init2 = 1;
 }
