@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:35 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:06:22 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 06:11:07 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void		put_choice(t_f *f)
 				GREY, ">      <");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, SHIP_X, SHIP_Y, GREY, "Ship");
 	if (f->flags.fr.tree == 1)
-		mlx_string_put(f->mlx.ptr, f->mlx.win, TREE_X - 20, TREE_Y, 
+		mlx_string_put(f->mlx.ptr, f->mlx.win, TREE_X - 20, TREE_Y,
 				GREY, ">      <");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, TREE_X, TREE_Y, GREY, "Tree");
 	if (f->flags.fr.hugulus == 1)
-		mlx_string_put(f->mlx.ptr, f->mlx.win, HUGU_X - 20, HUGU_Y, 
+		mlx_string_put(f->mlx.ptr, f->mlx.win, HUGU_X - 20, HUGU_Y,
 				GREY, ">         <");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, HUGU_X, HUGU_Y, GREY, "Hugulus");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, 25, 25, GREY, "exit : ESC");
@@ -71,7 +71,7 @@ static void		draw_middle(t_f *f)
 	if (init == 0)
 	{
 		img.ptr = mlx_new_image(f->mlx.ptr, X_WIN, Y_WIN);
-		img.data = (int *)mlx_get_data_addr(img.ptr, &img.bpp, &img.lsize, 
+		img.data = (int *)mlx_get_data_addr(img.ptr, &img.bpp, &img.lsize,
 				&img.endian);
 		b.x0 = 125;
 		b.y0 = Y_WIN / 4 + 350;
@@ -88,31 +88,29 @@ static void		draw_middle(t_f *f)
 
 void			display_choice(t_f *f, int repaint)
 {
-	static t_choice		choice;
+	static t_choice		c;
 
 	if (repaint == NEW)
 	{
-		choice.img_xpm.ptr = mlx_xpm_file_to_image(f->mlx.ptr,
-				"./images/choose_fractal.xpm", &choice.h, &choice.w);
-		choice.img.ptr = mlx_new_image(f->mlx.ptr, 1, 700);
-		choice.img.data = (int*)mlx_get_data_addr(choice.img.ptr,
-				&choice.img.bpp, &choice.img.lsize, &choice.img.endian);
-		fill_image(choice.img.data, 1, 700, GREY);
+		c.img_xpm.ptr = mlx_xpm_file_to_image(f->mlx.ptr, IMG, &c.h, &c.w);
+		c.img.ptr = mlx_new_image(f->mlx.ptr, 1, 700);
+		c.img.data = (int*)mlx_get_data_addr(c.img.ptr,
+				&c.img.bpp, &c.img.lsize, &c.img.endian);
+		fill_image(c.img.data, 1, 700, GREY);
 	}
 	if (repaint == REPAINT || repaint == NEW)
 	{
 		draw_middle(f);
-		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img_xpm.ptr, 0,
-				0);
-		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.ptr,
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, c.img_xpm.ptr, 0, 0);
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, c.img.ptr,
 				X_WIN / 4, Y_WIN / 4);
-		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.ptr,
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, c.img.ptr,
 			2 * X_WIN / 4, Y_WIN / 4);
-		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, choice.img.ptr,
+		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, c.img.ptr,
 			3 * X_WIN / 4, Y_WIN / 4);
 		put_choice(f);
 	}
 	if (repaint == DESTROY)
-		destroy_choice(&choice, f);
+		destroy_choice(&c, f);
 	f->flags.display_repaint = 1;
 }

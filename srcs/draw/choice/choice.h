@@ -6,13 +6,14 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 02:04:27 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/10 06:10:52 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHOICE_H
 # define CHOICE_H
 # include "../../../includes/fract.h"
+# define IMG "./images/choose_fractal.xpm"
 
 /*
 ** Possiton of the choice
