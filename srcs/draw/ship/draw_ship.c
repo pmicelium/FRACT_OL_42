@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 23:09:10 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 21:41:32 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ static void			zoom_ship(t_ship *s, t_f *f)
 	s->y2 = y_zoom + f->event.mouse.zoom * s->fy;
 	s->zoom_x = X_WIN / (s->x2 - s->x1);
 	s->zoom_y = Y_WIN / (s->y2 - s->y1);
-	if (f->event.mouse.zoom >= zoom)
-		s->ite_max -= f->event.key.nb_ite;
-	else
-		s->ite_max += f->event.key.nb_ite;
 	zoom = f->event.mouse.zoom;
 	f->event.mouse.flag = 0;
 	s->init2 = 0;

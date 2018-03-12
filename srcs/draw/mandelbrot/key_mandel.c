@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 06:04:15 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 23:02:39 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 21:38:39 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,7 @@ int				key_mandel(int keycode, t_f *f)
 
 void			mandel_key(t_mandel *m, t_f *f)
 {
-	static double		zoom = 50;
-
-	if (f->event.key.ite < zoom)
-		m->ite_max -= f->event.key.nb_ite;
-	else
-		m->ite_max += f->event.key.nb_ite;
-	zoom = f->event.key.ite;
+	m->ite_max = f->event.key.ite;
 	if (m->ite_max <= 0)
 		m->ite_max = 1;
 	f->event.key.flag = 0;

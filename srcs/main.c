@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 23:25:45 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 21:31:22 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 		f->fract = SHIP;
 		return (1);
 	}
-	else if (ft_strcmp(argv[1], "Tree") == 0)
-	{
-		f->fract = TREE;
-		return (1);
-	}
 	return (2);
 }
 
@@ -49,7 +44,6 @@ void			set_var(t_f *f)
 	f->flags.mandel_repaint = 0;
 	f->flags.julia_repaint = 0;
 	f->flags.ship_repaint = 0;
-	f->flags.tree_repaint = 0;
 	f->flags.hugulus_repaint = 0;
 	f->flags.fr.mandel = 0;
 	f->flags.fr.julia = 0;
@@ -65,7 +59,6 @@ void			set_var(t_f *f)
 	f->event.key.flag = 0;
 	f->event.key.tr_h = 0;
 	f->event.key.tr_v = 0;
-	f->event.key.nb_ite = 7;
 }
 
 int				main(int argc, char *argv[])

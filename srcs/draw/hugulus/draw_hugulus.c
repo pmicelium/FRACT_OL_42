@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:36:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 06:36:56 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 21:34:03 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void		zoom_hugulus(t_hugulus *h, t_f *f)
 {
 	double				x_zoom;
 	double				y_zoom;
-	static double		zoom = 1;
 
 	x_zoom = f->event.mouse.x / h->zoom_x + h->x1;
 	y_zoom = f->event.mouse.y / h->zoom_y + h->y1;
@@ -64,11 +63,6 @@ static void		zoom_hugulus(t_hugulus *h, t_f *f)
 	h->y2 = y_zoom + f->event.mouse.zoom * h->fy;
 	h->zoom_x = X_WIN / (h->x2 - h->x1);
 	h->zoom_y = Y_WIN / (h->y2 - h->y1);
-	if (f->event.mouse.zoom >= zoom)
-		h->ite_max -= f->event.key.nb_ite;
-	else
-		h->ite_max += f->event.key.nb_ite;
-	zoom = f->event.mouse.zoom;
 	f->event.mouse.flag = 0;
 	h->init2 = 1;
 }
