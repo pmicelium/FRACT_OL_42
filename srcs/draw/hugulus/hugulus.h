@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:34:37 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 06:36:51 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 23:01:51 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HUGULUS_H
 # define HUGULUS_H
-# include "../../../includes/fract.h"
+# include "fract.h"
 
 typedef struct		s_hugulus
 {

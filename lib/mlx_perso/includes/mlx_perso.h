@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 22:48:52 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 05:44:49 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 22:56:23 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define Y_WIN 1080
 
 /*
-# define X_WIN 1080
-# define Y_WIN 800
+**# define X_WIN 1080
+**# define Y_WIN 800
 */
 
 /*
@@ -90,10 +90,9 @@ int					check_draw(int x, int y, int x_img, int y_img);
 */
 void				init_img(t_img *img, t_mlx *mlx);
 
-
 /*
 ** make a line between b.x0, b.x1 and b.y0, b.y1
-** need to initialise x0, x1, y0, y1, x_win, y_win and color in  the struct 
+** need to initialise x0, x1, y0, y1, x_win, y_win and color in  the struct
 ** s_bresenham
 ** img need to have a img.ptr and img.data initialisated with the mlx
 */

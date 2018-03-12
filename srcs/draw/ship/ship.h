@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:48 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/02 02:00:46 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 23:01:20 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHIP_H
 # define SHIP_H
-# include "../../../includes/fract.h"
+# include "fract.h"
 
 typedef struct		s_ship
 {

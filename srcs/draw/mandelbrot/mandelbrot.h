@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/10 22:34:15 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 23:01:31 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MANDELBROT_H
 # define MANDELBROT_H
-# include "../../../includes/fract.h"
+# include "fract.h"
 
 typedef struct		s_mandel
 {

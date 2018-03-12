@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 21:31:22 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/12 22:52:34 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,14 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 	if (argc > 2)
 		return (2);
 	if (ft_strcmp(argv[1], "Mandelbrot") == 0)
-	{
 		f->fract = MANDEL;
-		return (1);
-	}
 	else if (ft_strcmp(argv[1], "Julia") == 0)
-	{
 		f->fract = JULIA;
-		return (1);
-	}
 	else if (ft_strcmp(argv[1], "Ship") == 0)
-	{
 		f->fract = SHIP;
-		return (1);
-	}
-	return (2);
+	else
+		return (2);
+	return (1);
 }
 
 void			set_var(t_f *f)
