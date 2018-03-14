@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 23:51:54 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:01:50 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 23:59:06 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int				key_fonct(int keycode, t_f *f)
 	if (keycode == KEY_1 || keycode == KEY_2 || keycode == KEY_3 ||
 			keycode == KEY_4)
 		key_change(keycode, f);
+	if (keycode == KEY_H)
+		f->help.flag = f->help.flag == 0 ? 1 : 0;
 	return (0);
 }

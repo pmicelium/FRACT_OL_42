@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:23:02 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 22:23:34 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		init_julia(t_julia *j, t_f *f)
 	j->init = 1;
 	j->init2 = 0;
 	j->ite_max = f->event.key.ite;
-	f->event.mouse.zoom /= 0.25;
+	f->event.mouse.zoom /= 0.5;
 }
 
 static void		julia_calcul(t_julia *j, int x, int color)

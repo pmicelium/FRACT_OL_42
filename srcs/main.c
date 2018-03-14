@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:04:11 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 23:57:14 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int				main(int argc, char *argv[])
 		ft_putendl_color("bad argument", "red");
 	f.mlx.ptr = mlx_init();
 	f.mlx.win = mlx_new_window(f.mlx.ptr, X_WIN, Y_WIN, "FRACT'OL 42");
+	f.help.img.ptr = mlx_xpm_file_to_image(f.mlx.ptr, HELP_IMG, &f.help.w,
+			&f.help.h);
 	mlx_hook(f.mlx.win, 2, (1l << 8), &key_fonct, &f);
 	mlx_hook(f.mlx.win, 4, (1l << 8), &mouse_fonct, &f);
 	mlx_hook(f.mlx.win, 6, (1L << 13), &motion_notify, &f);

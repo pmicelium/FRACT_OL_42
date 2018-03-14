@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:36:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:23:35 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 22:23:45 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		init_hugulus(t_hugulus *h, t_f *f)
 	h->init = 1;
 	h->init2 = 0;
 	h->ite_max = f->event.key.ite;
-	f->event.mouse.zoom /= 0.25;
+	f->event.mouse.zoom /= 0.5;
 }
 
 static void		zoom_hugulus(t_hugulus *h, t_f *f)

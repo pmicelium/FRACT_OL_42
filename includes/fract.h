@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:18:57 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 00:10:18 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include "../lib/libft/includes/libft.h"
 # include "../lib/minilibx_macos/mlx.h"
 # include "../lib/mlx_perso/includes/mlx_perso.h"
+
+# define HELP_IMG "./images/help.xpm"
 
 /*
 ** int value for each fractal
@@ -88,6 +90,17 @@ typedef struct			s_flags
 }						t_flags;
 
 /*
+** help strcut
+*/
+typedef struct			s_help
+{
+	t_img				img;
+	int					flag;
+	int					w;
+	int					h;
+}						t_help;
+
+/*
 ** main struct
 */
 typedef struct			s_f
@@ -97,6 +110,7 @@ typedef struct			s_f
 	t_mlx				mlx;
 	t_flags				flags;
 	t_event				event;
+	t_help				help;
 }						t_f;
 
 /*

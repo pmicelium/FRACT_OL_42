@@ -6,7 +6,7 @@
 #    By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 17:43:26 by pmiceli           #+#    #+#              #
-#    Updated: 2018/03/14 20:18:51 by pmiceli          ###   ########.fr        #
+#    Updated: 2018/03/15 00:08:54 by pmiceli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCDIR = ./srcs/
 SRCNAMES = main.c loop_hook.c destroy_fract.c fps/fps.c event/key_fonct.c\
 		   event/mouse_fonct.c event/motion_notify.c draw/draw_map.c\
 		   draw/choice/display_choice.c draw/choice/motion_choice.c\
-		   draw/choice/mouse_choice.c draw/mandelbrot/draw_mandelbrot.c\
+		   draw/choice/mouse_choice.c draw/choice/create_image.c\
+		   draw/mandelbrot/draw_mandelbrot.c\
 		   draw/mandelbrot/key_mandel.c draw/mandelbrot/mouse_mandel.c\
 		   draw/julia/draw_julia.c draw/julia/mouse_julia.c\
 		   draw/julia/motion_julia.c draw/julia/key_julia.c\
@@ -47,7 +48,7 @@ MLX_PERSO_DIR = ./lib/mlx_perso/
 MLX_PERSO = ./lib/mlx_perso/mlx_perso.a
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 MLX_FLAGS = -framework OpenGL -framework AppKit
 
 PRINT = "make[1]: Nothing to be done for 'all'"
