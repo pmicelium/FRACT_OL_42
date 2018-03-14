@@ -6,26 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:36:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 21:34:03 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:23:35 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hugulus.h"
-
-static int		set_color(t_hugulus h, int i)
-{
-	int		color;
-	int		r;
-	int		g;
-	int		b;
-
-	color = 0;
-	r = i * 255 / h.ite_max;
-	g = i * 255 / h.ite_max;
-	b = i * 255 / h.ite_max;
-	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
-	return (color);
-}
 
 static void		init_hugulus(t_hugulus *h, t_f *f)
 {
@@ -88,7 +73,7 @@ static void		hugulus_calcul(t_hugulus *h, int x)
 			i++;
 		}
 		if (i != h->ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-			h->img.data[y * X_WIN + x] = set_color(*h, i);
+			h->img.data[y * X_WIN + x] = h->color * (2 * i + 2);
 		y++;
 	}
 	x++;
@@ -109,6 +94,7 @@ void			draw_hugulus(t_f *f, int repaint)
 			zoom_hugulus(&h, f);
 		if (f->event.key.flag == 1)
 			hugulus_key(&h, f);
+		h.color = f->color;
 		while (++x < X_WIN)
 			hugulus_calcul(&h, x);
 	}

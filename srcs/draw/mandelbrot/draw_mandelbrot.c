@@ -6,26 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 21:38:07 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:21:47 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mandelbrot.h"
-
-static int			set_color(t_mandel m, int i)
-{
-	int		color;
-	int		r;
-	int		g;
-	int		b;
-
-	color = 0;
-	r = i * 255 / m.ite_max;
-	g = 0;
-	b = 0;
-	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
-	return (color);
-}
 
 static void			mandel_init(t_mandel *m, t_f *f)
 {
@@ -85,7 +70,7 @@ static void			mandel_calcul(t_mandel *m, int x)
 			i++;
 		}
 		if (i != m->ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-			m->img.data[y * X_WIN + x] = set_color(*m, i);
+			m->img.data[y * X_WIN + x] = m->color * (2 * i + 2);
 	}
 }
 
@@ -104,6 +89,7 @@ void				draw_mandelbrot(t_f *f, int repaint)
 			zoom_mandel(&m, f);
 		if (f->event.key.flag == 1)
 			mandel_key(&m, f);
+		m.color = f->color;
 		while (++x < X_WIN)
 			mandel_calcul(&m, x);
 	}

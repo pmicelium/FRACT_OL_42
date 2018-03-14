@@ -6,26 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 21:41:32 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:22:39 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ship.h"
-
-static int			set_color(t_ship s, int i)
-{
-	int		color;
-	int		r;
-	int		g;
-	int		b;
-
-	color = 0;
-	r = i * 255 / s.ite_max;
-	g = i * 255 / s.ite_max;
-	b = 0;
-	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
-	return (color);
-}
 
 static t_ship		ship_init(t_ship s)
 {
@@ -67,7 +52,7 @@ static void			zoom_ship(t_ship *s, t_f *f)
 	s->init2 = 0;
 }
 
-void				ship_calcul(t_ship *s, int x)
+void				ship_calcul(t_ship *s, int x, int color)
 {
 	int					y;
 	int					i;
@@ -90,7 +75,7 @@ void				ship_calcul(t_ship *s, int x)
 			i++;
 		}
 		if (i != s->ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-			s->img.data[y * X_WIN + x] = set_color(*s, i);
+			s->img.data[y * X_WIN + x] = color * (2 * i + 2);
 		y++;
 	}
 	x++;
@@ -113,7 +98,7 @@ void				draw_ship(t_f *f, int repaint)
 		if (f->event.mouse.flag == 1 || s.init2 == 1)
 			zoom_ship(&s, f);
 		while (++x < X_WIN)
-			ship_calcul(&s, x);
+			ship_calcul(&s, x, f->color);
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, s.img.ptr, 0, 0);

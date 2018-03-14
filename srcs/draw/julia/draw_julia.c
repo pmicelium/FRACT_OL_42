@@ -6,26 +6,11 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 21:32:56 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:23:02 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "julia.h"
-
-static int		set_color(t_julia j, int i)
-{
-	int		color;
-	int		r;
-	int		g;
-	int		b;
-
-	color = 0;
-	r = 0;
-	g = i * 255 / j.ite_max;
-	b = 0;
-	color = (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF);
-	return (color);
-}
 
 static void		init_julia(t_julia *j, t_f *f)
 {
@@ -50,7 +35,7 @@ static void		init_julia(t_julia *j, t_f *f)
 	f->event.mouse.zoom /= 0.25;
 }
 
-static void		julia_calcul(t_julia *j, int x)
+static void		julia_calcul(t_julia *j, int x, int color)
 {
 	int					y;
 	unsigned long		i;
@@ -71,7 +56,7 @@ static void		julia_calcul(t_julia *j, int x)
 			i++;
 		}
 		if (i != j->ite_max && check_draw(x, y, X_WIN, Y_WIN) == 1)
-			j->img.data[y * X_WIN + x] = set_color(*j, i);
+			j->img.data[y * X_WIN + x] = color * (2 * i + 2);
 		y++;
 	}
 	x++;
@@ -94,7 +79,7 @@ void			draw_julia(t_f *f, int repaint)
 		if (f->event.key.flag == 1)
 			julia_key(&j, f);
 		while (++j.x < X_WIN)
-			julia_calcul(&j, j.x);
+			julia_calcul(&j, j.x, f->color);
 	}
 	if (repaint == REPAINT || repaint == NEW)
 		mlx_put_image_to_window(f->mlx.ptr, f->mlx.win, j.img.ptr, 0, 0);

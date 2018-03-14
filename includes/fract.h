@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:35:40 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 23:02:36 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:18:57 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct			s_fr
 
 typedef struct			s_flags
 {
-	int					leaks;
 	int					display_repaint;
 	int					mandel_repaint;
 	int					julia_repaint;
@@ -94,6 +93,7 @@ typedef struct			s_flags
 typedef struct			s_f
 {
 	int					fract;
+	int					color;
 	t_mlx				mlx;
 	t_flags				flags;
 	t_event				event;

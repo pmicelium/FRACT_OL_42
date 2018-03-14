@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 21:48:28 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 22:52:34 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:04:11 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		check_for_fract(int argc, char *argv[], t_f *f)
 void			set_var(t_f *f)
 {
 	f->fract = 0;
-	f->flags.leaks = 0;
+	f->color = 0x889499;
 	f->flags.display_repaint = 0;
 	f->flags.mandel_repaint = 0;
 	f->flags.julia_repaint = 0;

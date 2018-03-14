@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:34:37 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 23:01:51 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:21:40 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct		s_hugulus
 {
 	int				init;
 	int				init2;
+	int				color;
 	double			x1;
 	double			x2;
 	double			y1;

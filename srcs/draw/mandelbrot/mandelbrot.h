@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 23:01:31 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/14 20:05:34 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 typedef struct		s_mandel
 {
 	int				init;
+	int				color;
 	double			x1;
 	double			y1;
 	double			x2;
