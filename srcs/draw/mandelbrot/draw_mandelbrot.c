@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:40:10 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:21:47 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 17:29:52 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void				draw_mandelbrot(t_f *f, int repaint)
 		x = -1;
 		if (f->event.mouse.flag == 1)
 			zoom_mandel(&m, f);
-		if (f->event.key.flag == 1)
+		if (f->event.key.flag == 1 || f->event.key.flag == 2)
 			mandel_key(&m, f);
 		m.color = f->color;
 		while (++x < X_WIN)

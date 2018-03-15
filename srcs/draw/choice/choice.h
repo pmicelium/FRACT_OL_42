@@ -6,13 +6,14 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:45 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 22:41:27 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 00:26:09 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHOICE_H
 # define CHOICE_H
 # include "fract.h"
+
 /*
 ** image's define
 */
@@ -39,6 +40,5 @@ typedef struct		s_choice
 	t_img			img;
 }					t_choice;
 
-
-void			create_image(t_choice *c, t_f *f);
+void				create_image(t_choice *c, t_f *f);
 #endif

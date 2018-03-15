@@ -6,13 +6,16 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/24 01:36:39 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:05:34 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:20:26 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MANDELBROT_H
 # define MANDELBROT_H
 # include "fract.h"
+
+# define RATIO_V 1.0 / 20.0 * (m->y2 - m->y1)
+# define RATIO_H 1.0 / 20.0 * (m->x2 - m->x1)
 
 typedef struct		s_mandel
 {

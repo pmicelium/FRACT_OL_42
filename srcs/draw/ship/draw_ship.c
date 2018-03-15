@@ -6,31 +6,31 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:22:39 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:12:30 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ship.h"
 
-static t_ship		ship_init(t_ship s)
+static void		ship_init(t_ship *s, t_f *f)
 {
-	s.fx = 1;
-	s.fy = 1;
+	s->fx = 1;
+	s->fy = 1;
 	if (((double)X_WIN) / ((double)Y_WIN) < 2.7 / 2.4)
-		s.fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
+		s->fy = ((double)Y_WIN / 240) / ((double)X_WIN / 270);
 	else
-		s.fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
-	s.x1 = (-2.1 + 0.75) * s.fx - 0.75;
-	s.x2 = (0.6 + 0.75) * s.fx - 0.75;
-	s.y1 = -1.2 * s.fy;
-	s.y2 = 1.2 * s.fy;
-	s.zoom_x = X_WIN / (s.x2 - s.x1);
-	s.zoom_y = Y_WIN / (s.y2 - s.y1);
-	s.ite_max = 50.0;
-	s.k = 1;
-	s.init = 1;
-	s.init2 = 1;
-	return (s);
+		s->fx = ((double)X_WIN / 270) / ((double)Y_WIN / 240);
+	s->x1 = (-2.1 + 0.75) * s->fx - 0.75;
+	s->x2 = (0.6 + 0.75) * s->fx - 0.75;
+	s->y1 = -1.2 * s->fy;
+	s->y2 = 1.2 * s->fy;
+	s->zoom_x = X_WIN / (s->x2 - s->x1);
+	s->zoom_y = Y_WIN / (s->y2 - s->y1);
+	s->ite_max = 50.0;
+	s->k = 1;
+	s->init = 1;
+	s->init2 = 1;
+	f->event.mouse.zoom /= 0.5;
 }
 
 static void			zoom_ship(t_ship *s, t_f *f)
@@ -87,16 +87,15 @@ void				draw_ship(t_f *f, int repaint)
 	int					x;
 
 	if (!s.init)
-	{
-		s = ship_init(s);
-		f->event.mouse.zoom /= 0.5;
-	}
+		ship_init(&s, f);
 	if (repaint == NEW)
 	{
 		init_img(&s.img, &f->mlx);
 		x = -1;
 		if (f->event.mouse.flag == 1 || s.init2 == 1)
 			zoom_ship(&s, f);
+		if (f->event.key.flag == 1 || f->event.key.flag == 2)
+			ship_key(&s, f);
 		while (++x < X_WIN)
 			ship_calcul(&s, x, f->color);
 	}

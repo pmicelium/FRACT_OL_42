@@ -6,13 +6,16 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:48 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 23:01:20 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:21:58 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHIP_H
 # define SHIP_H
 # include "fract.h"
+
+# define RATIO_V 1.0 / 20.0 * (s->y2 - s->y1)
+# define RATIO_H 1.0 / 20.0 * (s->x2 - s->x1)
 
 typedef struct		s_ship
 {
@@ -34,5 +37,7 @@ typedef struct		s_ship
 	double			fy;
 	struct s_img	img;
 }					t_ship;
+
+void			ship_key(t_ship *s, t_f *f);
 
 #endif

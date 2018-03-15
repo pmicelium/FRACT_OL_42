@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:19:35 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 22:41:09 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 00:25:21 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		put_choice(t_f *f)
 		mlx_string_put(f->mlx.ptr, f->mlx.win, HUGU_X - 20, HUGU_Y,
 				GREY, ">         <");
 	mlx_string_put(f->mlx.ptr, f->mlx.win, HUGU_X, HUGU_Y, GREY, "Hugulus");
-	mlx_string_put(f->mlx.ptr, f->mlx.win, 25, 25, GREY, "exit : ESC");
+	mlx_string_put(f->mlx.ptr, f->mlx.win, 25, 25, GREY, "help : H");
 }
 
 static void		destroy_choice(t_choice *choice, t_f *f)
