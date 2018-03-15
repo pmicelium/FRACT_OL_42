@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:36:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 22:23:45 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:32:28 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void			draw_hugulus(t_f *f, int repaint)
 		x = -1;
 		if (f->event.mouse.flag == 1 || h.init2 == 0)
 			zoom_hugulus(&h, f);
-		if (f->event.key.flag == 1)
+		if (f->event.key.flag == 1 || f->event.key.flag == 2)
 			hugulus_key(&h, f);
 		h.color = f->color;
 		while (++x < X_WIN)

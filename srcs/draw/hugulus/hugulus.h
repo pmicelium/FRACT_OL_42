@@ -6,13 +6,16 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 01:34:37 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 20:21:40 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:32:53 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HUGULUS_H
 # define HUGULUS_H
 # include "fract.h"
+
+# define RATIO_V 1.0 / 20.0 * (h->y2 - h->y1)
+# define RATIO_H 1.0 / 20.0 * (h->x2 - h->x1)
 
 typedef struct		s_hugulus
 {
