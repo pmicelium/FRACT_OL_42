@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:48 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/15 18:21:58 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 19:13:03 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ typedef struct		s_ship
 	struct s_img	img;
 }					t_ship;
 
-void			ship_key(t_ship *s, t_f *f);
+void				ship_key(t_ship *s, t_f *f);
 
 #endif

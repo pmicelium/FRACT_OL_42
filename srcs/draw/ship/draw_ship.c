@@ -6,13 +6,13 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 19:26:42 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/15 18:12:30 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 19:12:43 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ship.h"
 
-static void		ship_init(t_ship *s, t_f *f)
+static void			ship_init(t_ship *s, t_f *f)
 {
 	s->fx = 1;
 	s->fy = 1;
