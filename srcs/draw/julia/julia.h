@@ -6,13 +6,16 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:04 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/12 23:01:42 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:27:54 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef JULIA_H
 # define JULIA_H
 # include "fract.h"
+
+# define RATIO_V 1.0 / 20.0 * (j->y2 - j->y1)
+# define RATIO_H 1.0 / 20.0 * (j->x2 - j->x1)
 
 typedef struct		s_julia
 {

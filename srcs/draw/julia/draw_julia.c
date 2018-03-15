@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:41:01 by pmiceli           #+#    #+#             */
-/*   Updated: 2018/03/14 22:23:34 by pmiceli          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:28:15 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			draw_julia(t_f *f, int repaint)
 			change_c(&j, f);
 		if (f->event.mouse.flag == 1 || j.init2 == 0)
 			zoom_julia(&j, f);
-		if (f->event.key.flag == 1)
+		if (f->event.key.flag == 1 || f->event.key.flag == 2)
 			julia_key(&j, f);
 		while (++j.x < X_WIN)
 			julia_calcul(&j, j.x, f->color);
